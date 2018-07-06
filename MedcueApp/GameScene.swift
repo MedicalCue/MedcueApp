@@ -17,18 +17,25 @@ class GameScene: SKScene {
     var time: Double = 0
     var elapsed: Double = 0
     var status = false
-    var reference = 1
-    let labelSecond = SKLabelNode(fontNamed: "Times New Roman")
-    let labelMinute = SKLabelNode(fontNamed: "Times New Roman")
-    let respValue = SKLabelNode(fontNamed: "Times New Roman")
-    let testLabel = SKLabelNode(fontNamed: "Times New Roman")
+    var idx = 0
+    var reference = 0
+    var flag = 0
+    let labelSecond = SKLabelNode(fontNamed: "Arial")
+    let labelMinute = SKLabelNode(fontNamed: "Arial")
+    let respValue = SKLabelNode(fontNamed: "Arial")
+    let testLabel = SKLabelNode(fontNamed: "Arial")
+    let pulseValue = SKLabelNode(fontNamed: "Arial")
+    let satValue = SKLabelNode(fontNamed: "Arial")
+    let activityValue = SKLabelNode(fontNamed: "Arial")
     
-    var run_time: [Double] = [0, 5, 10, 15, 20]
-    var resp = ["Gasp", "Labored", "Apnea", "Gasp", "Chest Rise"]
-    
+    var run_time: [Double] = [0, 5, 10, 15, 20, 25, 30]
+    var resp = ["Gasp", "Apnea", "Apnea", "Gasp", "Chest Rise", "No Rise", "Gasp"]
+    var pulse = [50, 40, 30, 45, 60, 70, 100]
+    var sat = ["?", 40, 50, 60, 70, 80, 90] as [Any]
+    var activity = ["Limp", "Some Tone", "Tone", "Moving", "Motion", "Poor Motion", "Tone"]
     
     override func didMove(to view: SKView) {
-       
+        
         startTimer()
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
@@ -37,110 +44,245 @@ class GameScene: SKScene {
         
         let logoLabel = SKSpriteNode(imageNamed: "logo")
         logoLabel.size = CGSize(width: 1500/4, height: 224/4)
-        logoLabel.position = CGPoint(x: self.size.width*0.27, y: self.size.height*0.95)
+        logoLabel.position = CGPoint(x: self.size.width*0.73, y: self.size.height*0.95)
         self.addChild(logoLabel)
+        
+        let backLabel = SKLabelNode(fontNamed: "Arial")
+        backLabel.text = "<Back"
+        backLabel.fontSize = 85
+        backLabel.fontColor = SKColor.white
+        backLabel.name = "back"
+        backLabel.position = CGPoint(x: self.size.width*0.22, y: self.size.height*0.935)
+        self.addChild(backLabel)
         
         labelMinute.fontSize = 175
         labelMinute.fontColor = SKColor.white
-        labelMinute.position = CGPoint(x: self.size.width*0.44, y: self.size.height*0.85)
+        labelMinute.position = CGPoint(x: self.size.width*0.44, y: self.size.height*0.81)
         self.addChild(labelMinute)
         
         labelSecond.fontSize = 175
         labelSecond.fontColor = SKColor.white
-        labelSecond.position = CGPoint(x: self.size.width*0.575, y: self.size.height*0.85)
+        labelSecond.position = CGPoint(x: self.size.width*0.58, y: self.size.height*0.81)
         self.addChild(labelSecond)
  
-        let respLabel = SKLabelNode(fontNamed: "Times New Roman")
+        let respLabel = SKLabelNode(fontNamed: "Arial")
         respLabel.text = "Resp:"
         respLabel.fontSize = 125
         respLabel.fontColor = SKColor.white
-        respLabel.position = CGPoint(x: self.size.width*0.25, y: self.size.height*0.70)
+        respLabel.position = CGPoint(x: self.size.width*0.27, y: self.size.height*0.70)
         self.addChild(respLabel)
-        
       
         respValue.text = "\(resp[0])"
         if resp[0] == "Gasp" || resp[0] == "Apnea"  {
             respValue.fontColor = SKColor.red
         }
         respValue.fontSize = 125
-        respValue.fontColor = SKColor.white
         respValue.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
-        respValue.position = CGPoint(x: self.size.width*0.16, y: self.size.height*0.57)
+        respValue.position = CGPoint(x: self.size.width*0.165, y: self.size.height*0.57)
         self.addChild(respValue)
         
-        let pulseLabel = SKLabelNode(fontNamed: "Times New Roman")
+        let pulseLabel = SKLabelNode(fontNamed: "Arial")
         pulseLabel.text = "Pulse:"
         pulseLabel.fontSize = 125
         pulseLabel.fontColor = SKColor.white
-        pulseLabel.position = CGPoint(x: self.size.width*0.63, y: self.size.height*0.70)
+        pulseLabel.position = CGPoint(x: self.size.width*0.645, y: self.size.height*0.70)
         self.addChild(pulseLabel)
         
-        let satLabel = SKLabelNode(fontNamed: "Times New Roman")
+        pulseValue.text = "\(pulse[0])"
+        pulseValue.fontSize = 125
+        if pulse[0] > 99 && pulse[0] < 301  {
+            pulseValue.fontColor = SKColor.green
+        }
+        else if pulse[0] > 59 && pulse[0] < 100  {
+            pulseValue.fontColor = SKColor.yellow
+        }
+        else    {
+            pulseValue.fontColor = SKColor.red
+        }
+        pulseValue.position = CGPoint(x: self.size.width*0.56, y: self.size.height*0.57)
+        pulseValue.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        self.addChild(pulseValue)
+        
+        let satLabel = SKLabelNode(fontNamed: "Arial")
         satLabel.text = "Sat:"
         satLabel.fontSize = 125
         satLabel.fontColor = SKColor.white
-        satLabel.position = CGPoint(x: self.size.width*0.225, y: self.size.height*0.40)
+        satLabel.position = CGPoint(x: self.size.width*0.225, y: self.size.height*0.38)
         self.addChild(satLabel)
         
-        let activitylabel = SKLabelNode(fontNamed: "Times New Roman")
-        activitylabel.text = "Activity:"
-        activitylabel.fontSize = 125
-        activitylabel.fontColor = SKColor.white
-        activitylabel.position = CGPoint(x: self.size.width*0.67, y: self.size.height*0.40)
-        self.addChild(activitylabel)
+        satValue.text = "\(sat[0])"
+        satValue.fontSize = 125
+        satValue.position = CGPoint(x: self.size.width*0.18, y: self.size.height*0.27)
+        satValue.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        self.addChild(satValue)
+        
+        let activityLabel = SKLabelNode(fontNamed: "Arial")
+        activityLabel.text = "Activity:"
+        activityLabel.fontSize = 125
+        activityLabel.fontColor = SKColor.white
+        activityLabel.position = CGPoint(x: self.size.width*0.64, y: self.size.height*0.38)
+        self.addChild(activityLabel)
+        
+        activityValue.text = "\(activity[0])"
+        activityValue.fontSize = 125
+        activityValue.position = CGPoint(x: self.size.width*0.64, y: self.size.height*0.27)
+        if activity[0] == "Tone" || activity[0] == "Motion" || activity[0] == "Moving"    {
+            activityValue.fontColor = SKColor.green
+        }
+        else if activity[0] == "Some Tone" || activity[0] == "Poor Motion"   {
+            activityValue.fontColor = SKColor.yellow
+        }
+        else    {
+            activityValue.fontColor = SKColor.red
+        }
+        self.addChild(activityValue)
         
         let pauseButton = SKSpriteNode(imageNamed: "pause")
         pauseButton.size = CGSize(width: 626/4, height: 626/4)
         pauseButton.name = "pause"
-        pauseButton.position = CGPoint(x: self.size.width*0.20, y: self.size.height*0.10)
+        pauseButton.position = CGPoint(x: self.size.width*0.47, y: self.size.height*0.10)
         self.addChild(pauseButton)
         
         let playButton = SKSpriteNode(imageNamed: "play")
         playButton.size = CGSize(width: 969/5, height: 969/5)
         playButton.name = "play"
-        playButton.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.10)
+        playButton.position = CGPoint(x: self.size.width*0.55, y: self.size.height*0.10)
         self.addChild(playButton)
         
-        let startOver = SKLabelNode(fontNamed: "Times New Roman")
-        startOver.text = "Start Over"
+        let fastForward = SKSpriteNode(imageNamed: "ff")
+        fastForward.size = CGSize(width: 974/7, height: 974/7)
+        fastForward.name = "forward"
+        fastForward.position = CGPoint(x: self.size.width*0.64, y: self.size.height*0.10)
+        self.addChild(fastForward)
+        
+        let fastBackward = SKSpriteNode(imageNamed: "fb")
+        fastBackward.size = CGSize(width: 974/7, height: 974/7)
+        fastBackward.name = "backward"
+        fastBackward.position = CGPoint(x: self.size.width*0.38, y: self.size.height*0.10)
+        self.addChild(fastBackward)
+ 
+    /*
+        let startOver = SKLabelNode(fontNamed: "Arial")
+        startOver.text = "Reset"
         startOver.name = "reset"
         startOver.fontSize = 85
         startOver.fontColor = SKColor.white
-        startOver.position = CGPoint(x: self.size.width*0.52, y: self.size.height*0.0866)
+        startOver.position = CGPoint(x: self.size.width*0.52, y: self.size.height*0.2)
         self.addChild(startOver)
         
-        let exitButton = SKLabelNode(fontNamed: "Times New Roman")
-        exitButton.text = "Exit"
+        let exitButton = SKLabelNode(fontNamed: "Arial")
+        exitButton.text = "Finish"
         exitButton.fontSize = 85
         exitButton.fontColor = SKColor.white
-        exitButton.name = "exit"
-        exitButton.position = CGPoint(x: self.size.width*0.75, y: self.size.height*0.0866)
+        exitButton.name = "finish"
+        exitButton.position = CGPoint(x: self.size.width*0.75, y: self.size.height*0.2)
         self.addChild(exitButton)
         
-/*
-        testLabel.text = "timer: \(time)"
+        //testLabel.text = "timer: \(time)"
         testLabel.fontColor = SKColor.white
         testLabel.fontSize = 100
-        testLabel.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.20)
+        testLabel.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.20)
         self.addChild(testLabel)
-   */
-        
-        
+  */
 }
     
     func changeValue()  {
+        reference = idx + 1
         
-        if time/2 >= run_time[reference]  {
-            testLabel.text = "\(reference)"
-            respValue.text = String("\(resp[reference])")
-            if resp[reference] == "Gasp" || resp[reference] == "Apnea"  {
+        if elapsed >= run_time[reference] && flag == 0  {
+            if run_time[reference] == run_time.last  {
+                exit()
+            }
+            else    {
+      //          testLabel.text = "\(reference)"
+                respValue.text = String("\(resp[reference])")
+                respValue.fontSize = 125
+                pulseValue.text = String("\(pulse[reference])")
+                satValue.text = String("\(sat[reference])")
+                activityValue.text = String("\(activity[reference])")
+                activityValue.fontSize = 125
+                
+                if resp[reference] == "Gasp" || resp[reference] == "Apnea" || resp[reference] == "No Rise" {
+                    respValue.fontColor = SKColor.red
+                }
+                else if resp[reference] == "Labored"    {
+                    respValue.fontColor = SKColor.yellow
+                }
+                else if resp[reference] == "Chest Rise" {
+                    respValue.fontColor = SKColor.green
+                    respValue.fontSize = 100
+                }
+                
+                if pulse[reference] > 99  {
+                    pulseValue.fontColor = SKColor.green
+                }
+                else if pulse[reference] > 59 && pulse[reference] < 100 {
+                    pulseValue.fontColor = SKColor.yellow
+                }
+                else    {
+                    pulseValue.fontColor = SKColor.red
+                }
+                
+                if activity[reference] == "Tone" || activity[reference] == "Motion" || activity[reference] == "Moving"    {
+                    activityValue.fontColor = SKColor.green
+                }
+                else if activity[reference] == "Some Tone" || activity[reference] == "Poor Motion"   {
+                    activityValue.fontColor = SKColor.yellow
+                    activityValue.fontSize = 100
+                }
+                else{
+                    activityValue.fontColor = SKColor.red
+                }
+                
+                idx += 1
+            }
+        }
+            
+        else if flag == 1   {
+            
+     //       testLabel.text = "\(reference)"
+            respValue.text = String("\(resp[idx])")
+            respValue.fontSize = 125
+            pulseValue.text = String("\(pulse[idx])")
+            satValue.text = String("\(sat[idx])")
+            activityValue.text = String("\(activity[idx])")
+            activityValue.fontSize = 125
+            
+            if resp[idx] == "Gasp" || resp[idx] == "Apnea" || resp[idx] == "No Rise" {
                 respValue.fontColor = SKColor.red
             }
-            reference += 1
+            else if resp[idx] == "Labored"    {
+                respValue.fontColor = SKColor.yellow
+            }
+            else if resp[idx] == "Chest Rise" {
+                respValue.fontColor = SKColor.green
+                respValue.fontSize = 100
+            }
+            
+            if pulse[idx] > 99  {
+                pulseValue.fontColor = SKColor.green
+            }
+            else if pulse[idx] > 59 && pulse[idx] < 100 {
+                pulseValue.fontColor = SKColor.yellow
+            }
+            else    {
+                pulseValue.fontColor = SKColor.red
+            }
+            
+            if activity[idx] == "Tone" || activity[idx] == "Motion" || activity[idx] == "Moving"    {
+                activityValue.fontColor = SKColor.green
+            }
+            else if activity[idx] == "Some Tone" || activity[idx] == "Poor Motion"   {
+                activityValue.fontColor = SKColor.yellow
+                activityValue.fontSize = 100
+            }
+            else{
+                activityValue.fontColor = SKColor.red
+            }
+            
+      //      idx += 1
+            flag = 0
         }
-        
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -157,52 +299,103 @@ class GameScene: SKScene {
                 startTimer()
             }
             if nodeITapped.name == "reset"  {
-                resetButton()
+                resetTimer()
             }
-            if nodeITapped.name == "exit"   {
+            if nodeITapped.name == "back"   {
                 let sceneToMoveTo = HistoryScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 self.view!.presentScene(sceneToMoveTo)
+            }
+            if nodeITapped.name == "finish" {
+                exit()
+            }
+            if nodeITapped.name == "backward"    {
+                
+                if idx > 0  {
+                    previous()
+                }
+                else   {
+                    resetTimer()
+                }
+            }
+            if nodeITapped.name == "forward"    {
+            // pauseTimer()
+                time = time + 30
+                elapsed = elapsed + 15
+                updateTimer()
             }
         }
         
     }
     
     func startTimer()   {
-        
-        if status == false  {
-        startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-
-        status = true
+        if status == false    {
+            startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            status = true
+        }
+    }
+    //pause not working
+    func pauseTimer()    {
+        if status == true   {
+            elapsed = Date().timeIntervalSinceReferenceDate - startTime
+            timer?.invalidate()
+            status = false
         }
     }
     
-    func pauseTimer()    {
-        elapsed = Date().timeIntervalSinceReferenceDate - startTime
-        timer?.invalidate()
-        status = false
-        
-    }
-    
-    func resetButton()  {
+    func resetTimer()  {
         
         timer?.invalidate()
         startTime = 0
         time = 0
         elapsed = 0
         status = false
-        reference = 1
+        idx = 0
+        reference = idx + 1
         
         labelMinute.text = String("00:")
         labelSecond.text = String("00")
         respValue.text = "\(resp[0])"
+        pulseValue.text = "\(pulse[0])"
+        satValue.text = "\(sat[0])"
+        activityValue.text = "\(activity[0])"
         startTimer()
+        
+    }
+    
+    func previous() {
+        if status == true   {
+            //idx if you want to go to previous step, not necessarily start the step over again
+            idx -= 1
+            reference -= 1
+            elapsed = run_time[idx]
+            time = run_time[idx]
+            startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
+            flag = 1
+            updateTimer()
+        }
+        else if status == false     {
+            idx -= 1
+            reference -= 1
+            elapsed = run_time[idx]
+            time = run_time[idx]
+            startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
+            flag = 1
+            updateTimer()
+            
+        }
+        
     }
     
     @objc func updateTimer()    {
         
-        time = Date().timeIntervalSinceReferenceDate - startTime
+//      testLabel.text = "ref: \(reference) idx: \(idx)"
+        
+        if flag == 0    {
+            time = Date().timeIntervalSinceReferenceDate - startTime
+            elapsed = Date().timeIntervalSinceReferenceDate - startTime
+        }
         
         let minutes = UInt(time/60)
         time += (TimeInterval(minutes) * 60)
@@ -210,6 +403,7 @@ class GameScene: SKScene {
         var seconds = UInt(time)
         time += (TimeInterval(seconds))
         if seconds >= 60 {
+        
             seconds = seconds%60
         }
         
@@ -218,13 +412,28 @@ class GameScene: SKScene {
         
         labelMinute.text = strMinutes
         labelSecond.text = strSeconds
-  //      testLabel.text = "Timer: \(time)"
+   //     testLabel.text = "Timer: \(elapsed)"
         
         changeValue()
         
     }
     
+    func changeScene()  {
+        
+        let sceneToMoveTo = EndScene(size: self.size)
+        sceneToMoveTo.scaleMode = self.scaleMode
+        let myTransition = SKTransition.fade(withDuration: 0.5)
+        self.view!.presentScene(sceneToMoveTo, transition: myTransition)
+        
+    }
     
+    func exit()  {
+        pauseTimer()
+        let waitToChangeScene = SKAction.wait(forDuration: 0)
+        let changeSceneAction = SKAction.run(changeScene)
+        let changeSequence = SKAction.sequence([waitToChangeScene, changeSceneAction])
+        self.run(changeSequence)
+    }
     
     
     

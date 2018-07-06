@@ -27,42 +27,48 @@ class HistoryScene: SKScene {
         logoLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.85)
         self.addChild(logoLabel)
         
-        let scenarioLabel = SKLabelNode(fontNamed: "Times New Roman")
+        let scenarioLabel = SKLabelNode(fontNamed: "Arial")
         scenarioLabel.text = "Scenario: \(title)"
-        scenarioLabel.fontSize = 200
+        scenarioLabel.fontSize = 190
         scenarioLabel.fontColor = SKColor.white
         scenarioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.65)
         self.addChild(scenarioLabel)
         
-        let weeksLabel = SKLabelNode(fontNamed: "Times New Roman")
+        let weeksLabel = SKLabelNode(fontNamed: "Arial")
         weeksLabel.text = "\(weeks) weeks"
         weeksLabel.fontSize = 150
         weeksLabel.fontColor = SKColor.white
         weeksLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.55)
         self.addChild(weeksLabel)
         
-        let birthType = SKLabelNode(fontNamed: "Times New Roman")
+        let birthType = SKLabelNode(fontNamed: "Arial")
         birthType.text = "\(birth)"
         birthType.fontSize = 150
         birthType.fontColor = SKColor.white
         birthType.position = CGPoint(x: self.size.width/2, y: self.size.height*0.465)
         self.addChild(birthType)
         
-        let weightLabel = SKLabelNode(fontNamed: "Times New Roman")
+        let weightLabel = SKLabelNode(fontNamed: "Arial")
         weightLabel.text = "\(weight) kg"
         weightLabel.fontSize = 150
         weightLabel.fontColor = SKColor.white
         weightLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.38)
         self.addChild(weightLabel)
         
-        let startSim = SKLabelNode(fontNamed: "Times New Roman")
+        let startSim = SKSpriteNode(imageNamed: "start")
+        startSim.size = CGSize(width: 300, height: 300)
+        startSim.name = "startButton"
+        startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.23)
+        self.addChild(startSim)
+/*
+        let startSim = SKLabelNode(fontNamed: "Arial")
         startSim.text = "START"
         startSim.name = "startButton"
         startSim.fontSize = 150
         startSim.fontColor = SKColor.green
         startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.20)
         self.addChild(startSim)
-        
+  */
     }
  
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

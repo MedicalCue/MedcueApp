@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343099C120EEB4DB00474138 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343099C020EEB4DB00474138 /* EndScene.swift */; };
 		34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D2420EAD3A2000E9424 /* AppDelegate.swift */; };
 		34882D2720EAD3A2000E9424 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34882D2620EAD3A2000E9424 /* GameScene.sks */; };
 		34882D2920EAD3A2000E9424 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34882D2820EAD3A2000E9424 /* Actions.sks */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343099C020EEB4DB00474138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		34882D2120EAD3A2000E9424 /* MedcueApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedcueApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D2420EAD3A2000E9424 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34882D2620EAD3A2000E9424 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				34882D2820EAD3A2000E9424 /* Actions.sks */,
 				34882D2A20EAD3A2000E9424 /* HistoryScene.swift */,
 				34882D5C20EBDD28000E9424 /* GameScene.swift */,
+				343099C020EEB4DB00474138 /* EndScene.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				34882D2E20EAD3A2000E9424 /* Main.storyboard */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
@@ -278,6 +281,7 @@
 				34882D2D20EAD3A2000E9424 /* GameViewController.swift in Sources */,
 				34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */,
 				34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */,
+				343099C120EEB4DB00474138 /* EndScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
