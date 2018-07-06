@@ -10,12 +10,12 @@ import SpriteKit
 import GameplayKit
 
 class HistoryScene: SKScene {
- 
-    let title = "A"
-    let weeks = "40"
-    let birth = "C-section"
-    let weight = "3.5"
-    
+/*
+    let title = scenarios[pick][0]
+    let weeks = scenarios[pick][1]
+    let birth = scenarios[pick][2]
+    let weight = scenarios[pick][3]
+*/
     override func didMove(to view: SKView) {
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)

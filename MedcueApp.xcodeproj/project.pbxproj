@@ -20,6 +20,7 @@
 		34882D4B20EAD3A6000E9424 /* MedcueAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D4A20EAD3A6000E9424 /* MedcueAppUITests.swift */; };
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
+		34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */ = {isa = PBXBuildFile; fileRef = 34CCD6C020F016F400FA1ED7 /* Scenarios.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		34882D4C20EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		34CCD6C020F016F400FA1ED7 /* Scenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				34882D2A20EAD3A2000E9424 /* HistoryScene.swift */,
 				34882D5C20EBDD28000E9424 /* GameScene.swift */,
 				343099C020EEB4DB00474138 /* EndScene.swift */,
+				34CCD6C020F016F400FA1ED7 /* Scenarios.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				34882D2E20EAD3A2000E9424 /* Main.storyboard */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
@@ -145,6 +148,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		34CCD6C220F01A8300FA1ED7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		34882D2020EAD3A2000E9424 /* MedcueApp */ = {
 			isa = PBXNativeTarget;
@@ -153,6 +167,7 @@
 				34882D1D20EAD3A2000E9424 /* Sources */,
 				34882D1E20EAD3A2000E9424 /* Frameworks */,
 				34882D1F20EAD3A2000E9424 /* Resources */,
+				34CCD6C220F01A8300FA1ED7 /* Headers */,
 			);
 			buildRules = (
 			);
