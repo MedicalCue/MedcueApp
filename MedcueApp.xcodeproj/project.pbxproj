@@ -21,6 +21,7 @@
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
 		34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */ = {isa = PBXBuildFile; fileRef = 34CCD6C020F016F400FA1ED7 /* Scenarios.swift */; };
+		34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		34CCD6C020F016F400FA1ED7 /* Scenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
+		34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				34CCD6C020F016F400FA1ED7 /* Scenarios.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				34882D2E20EAD3A2000E9424 /* Main.storyboard */,
+				34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
 				34882D5A20EBD7AB000E9424 /* logo.png */,
 				34882D3320EAD3A6000E9424 /* LaunchScreen.storyboard */,
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */,
 				34882D2B20EAD3A2000E9424 /* HistoryScene.swift in Sources */,
 				34882D2D20EAD3A2000E9424 /* GameViewController.swift in Sources */,
 				34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */,

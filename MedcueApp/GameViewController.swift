@@ -12,28 +12,27 @@ import GameplayKit
 
 class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    
     @IBOutlet var Scenarios: UIPickerView!
-    var pick = -1
+    var pick = 0
     
-    let scenarios = ["Scenario: A", "Scenario: B", "Scenario: C", "Scenario: D"]
+    let scenario = ["Scenario: A", "Scenario: B", "Scenario: C", "Scenario: D"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return scenarios.count
+        return scenario.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         pick = row
-        return scenarios[row]
+        return scenario[row]
     }
     
     /*
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = scenarios[row]
+        let titleData = scenario[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         return myTitle
     }
@@ -41,23 +40,21 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func button(_ sender: UIButton) {
         
-        if scenarios[pick] == "Scenario: A"  {
-            let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            skView.ignoresSiblingOrder = true
-            scene.scaleMode = .aspectFill
-            
-            skView.presentScene(scene)
+    /*
+        if scenario[pick] == "Scenario: A"  {
+            declare(0)
         }
+        if scenario[pick] == "Scenario: B"  {
+            declare(1)
+        }
+      */
         
     }
     
     override func viewDidLoad() {
       
         super.viewDidLoad()
-  
+
    /*
         let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
         let skView = self.view as! SKView

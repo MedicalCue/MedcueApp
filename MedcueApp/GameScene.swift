@@ -169,7 +169,7 @@ class GameScene: SKScene {
         startOver.fontColor = SKColor.white
         startOver.position = CGPoint(x: self.size.width*0.52, y: self.size.height*0.2)
         self.addChild(startOver)
-        
+    */
         let exitButton = SKLabelNode(fontNamed: "Arial")
         exitButton.text = "Finish"
         exitButton.fontSize = 85
@@ -177,7 +177,7 @@ class GameScene: SKScene {
         exitButton.name = "finish"
         exitButton.position = CGPoint(x: self.size.width*0.75, y: self.size.height*0.2)
         self.addChild(exitButton)
-        
+  /*
         //testLabel.text = "timer: \(time)"
         testLabel.fontColor = SKColor.white
         testLabel.fontSize = 100
@@ -188,8 +188,8 @@ class GameScene: SKScene {
     
     func changeValue()  {
         reference = idx + 1
-        
-        if elapsed >= run_time[reference] && flag == 0  {
+
+        if elapsed >= run_time[reference]  {
             if run_time[reference] == run_time.last  {
                 exit()
             }
@@ -237,52 +237,7 @@ class GameScene: SKScene {
                 idx += 1
             }
         }
-            
-        else if flag == 1   {
-            
-     //       testLabel.text = "\(reference)"
-            respValue.text = String("\(resp[idx])")
-            respValue.fontSize = 125
-            pulseValue.text = String("\(pulse[idx])")
-            satValue.text = String("\(sat[idx])")
-            activityValue.text = String("\(activity[idx])")
-            activityValue.fontSize = 125
-            
-            if resp[idx] == "Gasp" || resp[idx] == "Apnea" || resp[idx] == "No Rise" {
-                respValue.fontColor = SKColor.red
-            }
-            else if resp[idx] == "Labored"    {
-                respValue.fontColor = SKColor.yellow
-            }
-            else if resp[idx] == "Chest Rise" {
-                respValue.fontColor = SKColor.green
-                respValue.fontSize = 100
-            }
-            
-            if pulse[idx] > 99  {
-                pulseValue.fontColor = SKColor.green
-            }
-            else if pulse[idx] > 59 && pulse[idx] < 100 {
-                pulseValue.fontColor = SKColor.yellow
-            }
-            else    {
-                pulseValue.fontColor = SKColor.red
-            }
-            
-            if activity[idx] == "Tone" || activity[idx] == "Motion" || activity[idx] == "Moving"    {
-                activityValue.fontColor = SKColor.green
-            }
-            else if activity[idx] == "Some Tone" || activity[idx] == "Poor Motion"   {
-                activityValue.fontColor = SKColor.yellow
-                activityValue.fontSize = 100
-            }
-            else{
-                activityValue.fontColor = SKColor.red
-            }
-            
-      //      idx += 1
-            flag = 0
-        }
+        print ("elapsed:\(elapsed)")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -309,21 +264,7 @@ class GameScene: SKScene {
             if nodeITapped.name == "finish" {
                 exit()
             }
-            if nodeITapped.name == "backward"    {
-                
-                if idx > 0  {
-                    previous()
-                }
-                else   {
-                    resetTimer()
-                }
-            }
-            if nodeITapped.name == "forward"    {
-            // pauseTimer()
-                time = time + 30
-                elapsed = elapsed + 15
-                updateTimer()
-            }
+            
         }
         
     }
@@ -364,38 +305,13 @@ class GameScene: SKScene {
         
     }
     
-    func previous() {
-        if status == true   {
-            //idx if you want to go to previous step, not necessarily start the step over again
-            idx -= 1
-            reference -= 1
-            elapsed = run_time[idx]
-            time = run_time[idx]
-            startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
-            flag = 1
-            updateTimer()
-        }
-        else if status == false     {
-            idx -= 1
-            reference -= 1
-            elapsed = run_time[idx]
-            time = run_time[idx]
-            startTime = Date().timeIntervalSinceReferenceDate - (elapsed)
-            flag = 1
-            updateTimer()
-            
-        }
-        
-    }
     
     @objc func updateTimer()    {
         
 //      testLabel.text = "ref: \(reference) idx: \(idx)"
-        
-        if flag == 0    {
-            time = Date().timeIntervalSinceReferenceDate - startTime
-            elapsed = Date().timeIntervalSinceReferenceDate - startTime
-        }
+    
+        time = Date().timeIntervalSinceReferenceDate - startTime
+        elapsed = Date().timeIntervalSinceReferenceDate - startTime
         
         let minutes = UInt(time/60)
         time += (TimeInterval(minutes) * 60)
@@ -422,17 +338,19 @@ class GameScene: SKScene {
         
         let sceneToMoveTo = EndScene(size: self.size)
         sceneToMoveTo.scaleMode = self.scaleMode
-        let myTransition = SKTransition.fade(withDuration: 0.5)
-        self.view!.presentScene(sceneToMoveTo, transition: myTransition)
+        self.view!.presentScene(sceneToMoveTo)
         
     }
     
     func exit()  {
+        
         pauseTimer()
-        let waitToChangeScene = SKAction.wait(forDuration: 0)
+        
+        let waitToChangeScene = SKAction.wait(forDuration: 0.5)
         let changeSceneAction = SKAction.run(changeScene)
         let changeSequence = SKAction.sequence([waitToChangeScene, changeSceneAction])
         self.run(changeSequence)
+        
     }
     
     

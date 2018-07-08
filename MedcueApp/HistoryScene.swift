@@ -9,14 +9,47 @@
 import SpriteKit
 import GameplayKit
 
+
+
 class HistoryScene: SKScene {
-/*
-    let title = scenarios[pick][0]
-    let weeks = scenarios[pick][1]
-    let birth = scenarios[pick][2]
-    let weight = scenarios[pick][3]
-*/
+    
+    
+    
     override func didMove(to view: SKView) {
+        /*
+        let coun = 5
+        var scenarios = [[String]]()
+//        var scenarios: [[String]] = Array(repeating: Array(repeating: 0, count: coun), count: coun)
+        scenarios[0][0] = "A1"
+        scenarios[0][1] = "50"
+        scenarios[0][2] = "Vaginal"
+        scenarios[0][3] = "4.0"
+        
+        scenarios[1][0] = "B"
+        scenarios[2][0] = "C"
+        scenarios[3][0] = "D"
+  */
+        
+        let title = "A1"
+        let weeks = "40"
+        let birth = "C-Section"
+        let weight = "3.5"
+        
+        /*
+        var title = "?"
+        var weeks = "?"
+        var birth = "?"
+        var weight = "?"
+        */
+        /*
+        title = scenarios[index][0]
+        weeks = scenarios[index][1]
+        birth = scenarios[index][2]
+        weight = scenarios[index][3]
+       */
+ 
+    //    let idx = declare()
+        
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)

@@ -11,11 +11,14 @@ import SpriteKit
 
 class EndScene: SKScene {
     
+    
     override func didMove(to view: SKView) {
+        
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.addChild(background)
+        
         
         let finishedLabel = SKLabelNode(fontNamed: "Arial")
         finishedLabel.text = "Finished!"
