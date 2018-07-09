@@ -62,7 +62,7 @@ class HistoryScene: SKScene {
         
         let scenarioLabel = SKLabelNode(fontNamed: "Arial")
         scenarioLabel.text = "Scenario: \(title)"
-        scenarioLabel.fontSize = 190
+        scenarioLabel.fontSize = 180
         scenarioLabel.fontColor = SKColor.white
         scenarioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.65)
         self.addChild(scenarioLabel)
