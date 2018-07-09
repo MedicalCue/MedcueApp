@@ -9,8 +9,11 @@
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 
 class GameScene: SKScene {
+    
+    var audioPlayer : AVAudioPlayer!
     
     var timer: Timer?
     var startTime: Double = 0
@@ -32,7 +35,31 @@ class GameScene: SKScene {
     var resp = ["Gasp", "Apnea", "Apnea", "Gasp", "Chest Rise", "No Rise", "Gasp"]
     var pulse = [50, 40, 30, 45, 60, 70, 100]
     var sat = ["?", 40, 50, 60, 70, 80, 90] as [Any]
+    var sound = ["Cry", "Silent", "Cry", "Silent", "Cry"]
     var activity = ["Limp", "Some Tone", "Tone", "Moving", "Motion", "Poor Motion", "Tone"]
+    
+    func playSoundWith(fileName: String, fileExtension: String) -> Void {
+        let audioSourceURL: URL!
+        audioSourceURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension)
+        if audioSourceURL == nil {
+            print("no audio")
+        } else {
+            do {
+                audioPlayer = try AVAudioPlayer.init(contentsOf: audioSourceURL!)
+                audioPlayer.prepareToPlay()
+                audioPlayer.play()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func startAudio(_ sender: UIButton) {
+        playSoundWith(fileName: "baby-crying-01", fileExtension: "mp3")
+    }
+    
+    
+    var audioFilePath = Bundle.main.path(forResource: "baby-crying-01", ofType: "mp3")
     
     override func didMove(to view: SKView) {
         
@@ -71,6 +98,13 @@ class GameScene: SKScene {
         respLabel.fontColor = SKColor.white
         respLabel.position = CGPoint(x: self.size.width*0.27, y: self.size.height*0.70)
         self.addChild(respLabel)
+        
+        let soundlabel = SKLabelNode (fontNamed: "Times New Roman")
+        soundlabel.text = "Sound:"
+        soundlabel.fontSize = 125
+        soundlabel.fontColor = SKColor.red
+        soundlabel.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.2)
+        self.addChild(soundlabel)
       
         respValue.text = "\(resp[0])"
         if resp[0] == "Gasp" || resp[0] == "Apnea"  {
