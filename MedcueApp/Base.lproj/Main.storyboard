@@ -48,7 +48,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROW-JP-XXU">
-                                <rect key="frame" x="182" y="510" width="50" height="48"/>
+                                <rect key="frame" x="182" y="509" width="50" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7oo-cS-eRW"/>
                                     <constraint firstAttribute="height" constant="48" id="h3Z-dn-WZl"/>
@@ -69,8 +69,8 @@
                             <constraint firstItem="lLs-kH-alI" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="09u-vv-8GA"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="nPc-Do-MS0" secondAttribute="trailing" constant="20" id="6ye-uu-bIj"/>
                             <constraint firstItem="nPc-Do-MS0" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="Afl-jd-149"/>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="178" id="KwP-gp-HBO"/>
-                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="8" id="OUF-cJ-mK5"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="179" id="KwP-gp-HBO"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="7" id="OUF-cJ-mK5"/>
                             <constraint firstItem="lLs-kH-alI" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="46" id="RBV-6H-HHI"/>
                             <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="RXs-Ku-eqG"/>
                             <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-33" id="drt-tf-ciJ"/>
