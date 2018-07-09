@@ -38,29 +38,7 @@ class GameScene: SKScene {
     var sound = ["Cry", "Silent", "Cry", "Silent", "Cry"]
     var activity = ["Limp", "Some Tone", "Tone", "Moving", "Motion", "Poor Motion", "Tone"]
     
-    func playSoundWith(fileName: String, fileExtension: String) -> Void {
-        let audioSourceURL: URL!
-        audioSourceURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension)
-        if audioSourceURL == nil {
-            print("no audio")
-        } else {
-            do {
-                audioPlayer = try AVAudioPlayer.init(contentsOf: audioSourceURL!)
-                audioPlayer.prepareToPlay()
-                audioPlayer.play()
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    @IBAction func startAudio(_ sender: UIButton) {
-        playSoundWith(fileName: "baby-crying-01", fileExtension: "mp3")
-    }
-    
-    
-    var audioFilePath = Bundle.main.path(forResource: "baby-crying-01", ofType: "mp3")
-    
+
     override func didMove(to view: SKView) {
         
         startTimer()
@@ -218,6 +196,20 @@ class GameScene: SKScene {
         testLabel.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.20)
         self.addChild(testLabel)
   */
+        
+        let crySound = SKAction.playSoundFileNamed("BabyCry", waitForCompletion: false)
+              self.run(crySound)
+        
+        
+        if sound[reference] == "Cry" {
+           self.run(crySound)
+          
+        }
+        else if sound[reference] == "Silent" {
+            if self.audioPlayer.isPlaying {
+                crySound.stop(remove)
+            }
+        }
 }
     
     func changeValue()  {
@@ -228,7 +220,7 @@ class GameScene: SKScene {
                 exit()
             }
             else    {
-      //          testLabel.text = "\(reference)"
+      //        testLabel.text = "\(reference)"
                 respValue.text = String("\(resp[reference])")
                 respValue.fontSize = 125
                 pulseValue.text = String("\(pulse[reference])")
@@ -267,7 +259,6 @@ class GameScene: SKScene {
                 else{
                     activityValue.fontColor = SKColor.red
                 }
-                
                 idx += 1
             }
         }
@@ -298,9 +289,7 @@ class GameScene: SKScene {
             if nodeITapped.name == "finish" {
                 exit()
             }
-            
         }
-        
     }
     
     func startTimer()   {
@@ -336,7 +325,6 @@ class GameScene: SKScene {
         satValue.text = "\(sat[0])"
         activityValue.text = "\(activity[0])"
         startTimer()
-        
     }
     
     
@@ -377,7 +365,6 @@ class GameScene: SKScene {
     }
     
     func exit()  {
-        
         pauseTimer()
         
         let waitToChangeScene = SKAction.wait(forDuration: 0.5)

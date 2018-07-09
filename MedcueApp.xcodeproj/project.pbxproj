@@ -23,6 +23,8 @@
 		34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */ = {isa = PBXBuildFile; fileRef = 34CCD6C020F016F400FA1ED7 /* Scenarios.swift */; };
 		34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */; };
 		62B193DC20F3BF7C0031AB02 /* baby-crying-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193DB20F3BF7C0031AB02 /* baby-crying-01.mp3 */; };
+		62B193DF20F3DE1A0031AB02 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */; };
+		62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		34CCD6C020F016F400FA1ED7 /* Scenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
 		34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		62B193DB20F3BF7C0031AB02 /* baby-crying-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "baby-crying-01.mp3"; path = "../../../Downloads/baby-crying-01.mp3"; sourceTree = "<group>"; };
+		62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BabyCry.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B193DF20F3DE1A0031AB02 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +104,7 @@
 				34882D3E20EAD3A6000E9424 /* MedcueAppTests */,
 				34882D4920EAD3A6000E9424 /* MedcueAppUITests */,
 				34882D2220EAD3A2000E9424 /* Products */,
+				62B193DD20F3DE1A0031AB02 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +136,7 @@
 				34882D5A20EBD7AB000E9424 /* logo.png */,
 				34882D3320EAD3A6000E9424 /* LaunchScreen.storyboard */,
 				34882D3620EAD3A6000E9424 /* Info.plist */,
+				62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */,
 			);
 			path = MedcueApp;
 			sourceTree = "<group>";
@@ -150,6 +157,14 @@
 				34882D4C20EAD3A6000E9424 /* Info.plist */,
 			);
 			path = MedcueAppUITests;
+			sourceTree = "<group>";
+		};
+		62B193DD20F3DE1A0031AB02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +286,7 @@
 				34882D3020EAD3A2000E9424 /* Main.storyboard in Resources */,
 				34882D2720EAD3A2000E9424 /* GameScene.sks in Resources */,
 				62B193DC20F3BF7C0031AB02 /* baby-crying-01.mp3 in Resources */,
+				62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */,
 				34882D5B20EBD7AB000E9424 /* logo.png in Resources */,
 				34882D3220EAD3A6000E9424 /* Assets.xcassets in Resources */,
 				34882D3520EAD3A6000E9424 /* LaunchScreen.storyboard in Resources */,

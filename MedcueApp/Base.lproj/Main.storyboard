@@ -26,7 +26,6 @@
                                 </state>
                                 <connections>
                                     <action selector="button:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZcK-hk-Kdp"/>
-                                    <action selector="startAudio:" destination="3se-qz-xqx" eventType="touchUpInside" id="izt-ad-MTB"/>
                                     <segue destination="wFJ-Mw-hsv" kind="show" id="j5z-hJ-sOh"/>
                                 </connections>
                             </button>
