@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" id="BV1-FR-VrT" customClass="GameViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYj-r6-asL">
+                                <rect key="frame" x="0.0" y="286" width="414" height="216"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="DP5-au-a2G"/>
+                                    <constraint firstAttribute="height" constant="216" id="d4u-mt-46P"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BV1-FR-VrT" id="9Qb-bu-OFR"/>
+                                    <outlet property="delegate" destination="BV1-FR-VrT" id="iWg-aX-b3H"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the NeoCue Training Simulator!       Choose a Scenario                 to begin.                    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-Do-MS0">
+                                <rect key="frame" x="20" y="133" width="374" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="185" id="UHe-xd-UqT"/>
+                                    <constraint firstAttribute="width" constant="374" id="XOr-XD-ooE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="29"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lLs-kH-alI">
+                                <rect key="frame" x="46" y="20" width="323" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="146" id="7iR-Hu-FEZ"/>
+                                    <constraint firstAttribute="width" constant="323" id="PQe-3Y-S2K"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROW-JP-XXU">
+                                <rect key="frame" x="182" y="510" width="50" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="7oo-cS-eRW"/>
+                                    <constraint firstAttribute="height" constant="48" id="h3Z-dn-WZl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="32"/>
+                                <state key="normal" title="GO">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="button:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZcK-hk-Kdp"/>
+                                    <segue destination="wFJ-Mw-hsv" kind="show" id="j5z-hJ-sOh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lLs-kH-alI" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="09u-vv-8GA"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="nPc-Do-MS0" secondAttribute="trailing" constant="20" id="6ye-uu-bIj"/>
+                            <constraint firstItem="nPc-Do-MS0" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="Afl-jd-149"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="178" id="KwP-gp-HBO"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="8" id="OUF-cJ-mK5"/>
+                            <constraint firstItem="lLs-kH-alI" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="46" id="RBV-6H-HHI"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="RXs-Ku-eqG"/>
+                            <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-33" id="drt-tf-ciJ"/>
+                            <constraint firstItem="PYj-r6-asL" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="hKR-az-rtX"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="PYj-r6-asL" secondAttribute="trailing" id="rMW-eN-Voo"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="lLs-kH-alI" secondAttribute="trailing" constant="45" id="umZ-sn-PES"/>
+                            <constraint firstItem="PYj-r6-asL" firstAttribute="top" secondItem="nPc-Do-MS0" secondAttribute="bottom" constant="-32" id="ux4-z9-fMo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                    </view>
+                    <connections>
+                        <outlet property="Scenarios" destination="PYj-r6-asL" id="mnr-TY-yoD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.13043478260872" y="132.06521739130434"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="04h-AV-g9o">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" id="wFJ-Mw-hsv" customClass="ViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mOo-Bb-eSn" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQc-cH-iFK">
+                                <rect key="frame" x="20" y="20" width="283" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="283" id="DFt-ja-2cl"/>
+                                    <constraint firstAttribute="height" constant="46" id="bUq-cF-JKR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                <state key="normal" title="&lt;Main Menu"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="CCv-T2-uBu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GE0-dJ-AS6" firstAttribute="bottom" secondItem="MQc-cH-iFK" secondAttribute="bottom" constant="670" id="4TB-uL-gM2"/>
+                            <constraint firstItem="MQc-cH-iFK" firstAttribute="top" secondItem="GE0-dJ-AS6" secondAttribute="top" id="5eH-RU-xic"/>
+                            <constraint firstItem="MQc-cH-iFK" firstAttribute="leading" secondItem="GE0-dJ-AS6" secondAttribute="leading" constant="20" id="I5k-e6-W4e"/>
+                            <constraint firstItem="GE0-dJ-AS6" firstAttribute="trailing" secondItem="MQc-cH-iFK" secondAttribute="trailing" constant="111" id="XWj-85-iIc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GE0-dJ-AS6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEP-hm-WXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.75362318840587" y="-510.32608695652181"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="1500" height="224"/>
+    </resources>
+    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
