@@ -1,4 +1,4 @@
-//test
+//
 //  Scenarios.swift
 //  MedcueApp
 //

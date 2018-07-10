@@ -1,4 +1,4 @@
-//test
+//
 //  ViewController.swift
 //  MedcueApp
 //
@@ -11,6 +11,9 @@ import SpriteKit
 
 class ViewController: UIViewController  {
     
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,7 @@ class ViewController: UIViewController  {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(scene)
+
     }
     
     override func didReceiveMemoryWarning() {

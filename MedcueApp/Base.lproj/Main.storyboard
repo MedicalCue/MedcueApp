@@ -30,16 +30,6 @@
                                     <outlet property="delegate" destination="BV1-FR-VrT" id="iWg-aX-b3H"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the NeoCue Training Simulator!       Choose a Scenario                 to begin.                    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-Do-MS0">
-                                <rect key="frame" x="20" y="133" width="374" height="185"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="UHe-xd-UqT"/>
-                                    <constraint firstAttribute="width" constant="374" id="XOr-XD-ooE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="29"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lLs-kH-alI">
                                 <rect key="frame" x="46" y="20" width="323" height="146"/>
                                 <constraints>
@@ -62,6 +52,16 @@
                                     <segue destination="wFJ-Mw-hsv" kind="show" id="j5z-hJ-sOh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the NeoCue Training Simulator!       Choose a Scenario                 to begin.                    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-Do-MS0">
+                                <rect key="frame" x="20" y="148" width="374" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="185" id="UHe-xd-UqT"/>
+                                    <constraint firstAttribute="width" constant="374" id="XOr-XD-ooE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="29"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,11 +73,11 @@
                             <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="7" id="OUF-cJ-mK5"/>
                             <constraint firstItem="lLs-kH-alI" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="46" id="RBV-6H-HHI"/>
                             <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="RXs-Ku-eqG"/>
-                            <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-33" id="drt-tf-ciJ"/>
+                            <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-18" id="drt-tf-ciJ"/>
                             <constraint firstItem="PYj-r6-asL" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="hKR-az-rtX"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="PYj-r6-asL" secondAttribute="trailing" id="rMW-eN-Voo"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="lLs-kH-alI" secondAttribute="trailing" constant="45" id="umZ-sn-PES"/>
-                            <constraint firstItem="PYj-r6-asL" firstAttribute="top" secondItem="nPc-Do-MS0" secondAttribute="bottom" constant="-32" id="ux4-z9-fMo"/>
+                            <constraint firstItem="PYj-r6-asL" firstAttribute="top" secondItem="nPc-Do-MS0" secondAttribute="bottom" constant="-47" id="ux4-z9-fMo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>

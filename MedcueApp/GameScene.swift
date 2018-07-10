@@ -1,4 +1,4 @@
-//test
+//
 //  GameScene.swift
 //  MedcueApp
 //
@@ -11,6 +11,7 @@ import SpriteKit
 import UIKit
 
 class GameScene: SKScene {
+    
     
     var timer: Timer?
     var startTime: Double = 0
@@ -124,7 +125,7 @@ class GameScene: SKScene {
         activityLabel.text = "Activity:"
         activityLabel.fontSize = 125
         activityLabel.fontColor = SKColor.white
-        activityLabel.position = CGPoint(x: self.size.width*0.64, y: self.size.height*0.38)
+        activityLabel.position = CGPoint(x: self.size.width*0.66, y: self.size.height*0.38)
         self.addChild(activityLabel)
         
         activityValue.text = "\(activity[0])"
@@ -176,10 +177,10 @@ class GameScene: SKScene {
     */
         let exitButton = SKLabelNode(fontNamed: "Arial")
         exitButton.text = "Finish"
-        exitButton.fontSize = 85
+        exitButton.fontSize = 100
         exitButton.fontColor = SKColor.white
         exitButton.name = "finish"
-        exitButton.position = CGPoint(x: self.size.width*0.75, y: self.size.height*0.2)
+        exitButton.position = CGPoint(x: self.size.width*0.75, y: self.size.height*0.13)
         self.addChild(exitButton)
   /*
         //testLabel.text = "timer: \(time)"
@@ -315,8 +316,6 @@ class GameScene: SKScene {
     
     
     @objc func updateTimer()    {
-        
-//      testLabel.text = "ref: \(reference) idx: \(idx)"
     
         time = Date().timeIntervalSinceReferenceDate - startTime
         elapsed = Date().timeIntervalSinceReferenceDate - startTime
@@ -339,7 +338,6 @@ class GameScene: SKScene {
    //     testLabel.text = "Timer: \(elapsed)"
         
         changeValue()
-        print("\(status)")
         
     }
     
