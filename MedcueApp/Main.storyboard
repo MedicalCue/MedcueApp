@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" id="BV1-FR-VrT" customClass="GameViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYj-r6-asL">
+                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="2xS-j4-jek"/>
+                                    <constraint firstAttribute="width" constant="320" id="GAx-0p-qod"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BV1-FR-VrT" id="9Qb-bu-OFR"/>
+                                    <outlet property="delegate" destination="BV1-FR-VrT" id="iWg-aX-b3H"/>
+                                </connections>
+                            </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lLs-kH-alI">
+                                <rect key="frame" x="43" y="32" width="234" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="0Gi-d6-xsO"/>
+                                    <constraint firstAttribute="height" constant="103" id="wzo-Jg-JqT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the NeoCue Training Simulator!         Choose a Scenario                               to begin.                    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-Do-MS0" userLabel="Welcome to the NeoCue Training Simulator!         Choose a Scenario                               to begin.">
+                                <rect key="frame" x="16" y="104" width="288" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="Olc-LZ-F3I"/>
+                                    <constraint firstAttribute="height" constant="168" id="XO7-Nd-iSV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROW-JP-XXU">
+                                <rect key="frame" x="135" y="375" width="50" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="EG4-mM-Ch0"/>
+                                    <constraint firstAttribute="height" constant="48" id="J36-Dv-FUq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="32"/>
+                                <state key="normal" title="GO">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="button:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZcK-hk-Kdp"/>
+                                    <segue destination="wFJ-Mw-hsv" kind="show" id="j5z-hJ-sOh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="-17" id="DiP-Ts-F0K"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="M99-EL-BeT"/>
+                            <constraint firstItem="PYj-r6-asL" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="NWa-i5-oWv"/>
+                            <constraint firstItem="PYj-r6-asL" firstAttribute="top" secondItem="nPc-Do-MS0" secondAttribute="bottom" constant="-96" id="QS9-Di-93o"/>
+                            <constraint firstItem="lLs-kH-alI" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="WGY-Vt-JBF"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="145" id="atR-l8-c1A"/>
+                            <constraint firstItem="nPc-Do-MS0" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="g8N-N9-T5F"/>
+                            <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-31" id="gHL-0y-EpE"/>
+                            <constraint firstItem="lLs-kH-alI" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="12" id="hmW-an-w7T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                    </view>
+                    <connections>
+                        <outlet property="Scenarios" destination="PYj-r6-asL" id="mnr-TY-yoD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.75" y="132.04225352112675"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="04h-AV-g9o">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" id="wFJ-Mw-hsv" customClass="ViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mOo-Bb-eSn" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQc-cH-iFK">
+                                <rect key="frame" x="20" y="20" width="283" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="283" id="DFt-ja-2cl"/>
+                                    <constraint firstAttribute="height" constant="46" id="bUq-cF-JKR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                <state key="normal" title="&lt;Main Menu"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="CCv-T2-uBu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GE0-dJ-AS6" firstAttribute="bottom" secondItem="MQc-cH-iFK" secondAttribute="bottom" constant="670" id="4TB-uL-gM2"/>
+                            <constraint firstItem="MQc-cH-iFK" firstAttribute="top" secondItem="GE0-dJ-AS6" secondAttribute="top" id="5eH-RU-xic"/>
+                            <constraint firstItem="MQc-cH-iFK" firstAttribute="leading" secondItem="GE0-dJ-AS6" secondAttribute="leading" constant="20" id="I5k-e6-W4e"/>
+                            <constraint firstItem="GE0-dJ-AS6" firstAttribute="trailing" secondItem="MQc-cH-iFK" secondAttribute="trailing" constant="111" id="XWj-85-iIc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GE0-dJ-AS6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEP-hm-WXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.75362318840587" y="-510.32608695652181"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="1500" height="224"/>
+    </resources>
+    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>

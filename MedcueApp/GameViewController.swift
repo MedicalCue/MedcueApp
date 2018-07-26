@@ -30,13 +30,13 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         return scenario[row]
     }
     
-    /*
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = scenario[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         return myTitle
     }
- */
+ 
     
     @IBAction func button(_ sender: UIButton) {
         
@@ -84,6 +84,11 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
 
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
 }

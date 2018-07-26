@@ -8,48 +8,41 @@
 
 import SpriteKit
 import GameplayKit
-
-
+import FirebaseDatabase
 
 class HistoryScene: SKScene {
     
+    var scenName: String = ""
+    
+    var title = ""
+    var weeks = ""
+    var birth = ""
+    var weight = ""
+    
+    var ref: DatabaseReference!
+    var scenRef: DatabaseReference!
+  //  var handle: DatabaseHandle!
     
     
     override func didMove(to view: SKView) {
+        
+        //     let vc = GameViewController()
+  //      let scenName = getter.scenNum
+        //    var scenName: String = "Scenario A"
+        
+        print("scenName: \(scenName)")
+        
+        self.ref = Database.database().reference()
+        self.scenRef = self.ref.child("Scenarios")
+       
         /*
-        let coun = 5
-        var scenarios = [[String]]()
-//        var scenarios: [[String]] = Array(repeating: Array(repeating: 0, count: coun), count: coun)
-        scenarios[0][0] = "A1"
-        scenarios[0][1] = "50"
-        scenarios[0][2] = "Vaginal"
-        scenarios[0][3] = "4.0"
-        
-        scenarios[1][0] = "B"
-        scenarios[2][0] = "C"
-        scenarios[3][0] = "D"
-  */
-        
-        let title = "A1"
-        let weeks = "40"
-        let birth = "C-Section"
-        let weight = "3.5"
-        
-        /*
-        var title = "?"
-        var weeks = "?"
-        var birth = "?"
-        var weight = "?"
-        */
-        /*
-        title = scenarios[index][0]
-        weeks = scenarios[index][1]
-        birth = scenarios[index][2]
-        weight = scenarios[index][3]
-       */
- 
-    //    let idx = declare()
-        
+        handle = ref.child("Scenarios").observe(.childAdded, with: { (data) in
+            let name: String = (data.value as? String)!
+            debugPrint(name)
+            })
+ */
+
+        getScenarios()
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
@@ -61,14 +54,14 @@ class HistoryScene: SKScene {
         self.addChild(logoLabel)
         
         let scenarioLabel = SKLabelNode(fontNamed: "Arial")
-        scenarioLabel.text = "Scenario: \(title)"
-        scenarioLabel.fontSize = 190
+        scenarioLabel.text = "Scenario: \(String(describing: title))"
+        scenarioLabel.fontSize = 180
         scenarioLabel.fontColor = SKColor.white
         scenarioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.65)
         self.addChild(scenarioLabel)
         
         let weeksLabel = SKLabelNode(fontNamed: "Arial")
-        weeksLabel.text = "\(weeks) weeks"
+        weeksLabel.text = "\(String(describing: weeks)) weeks"
         weeksLabel.fontSize = 150
         weeksLabel.fontColor = SKColor.white
         weeksLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.55)
@@ -82,7 +75,7 @@ class HistoryScene: SKScene {
         self.addChild(birthType)
         
         let weightLabel = SKLabelNode(fontNamed: "Arial")
-        weightLabel.text = "\(weight) kg"
+        weightLabel.text = "\(String(describing: weight)) kg"
         weightLabel.fontSize = 150
         weightLabel.fontColor = SKColor.white
         weightLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.38)
@@ -93,15 +86,35 @@ class HistoryScene: SKScene {
         startSim.name = "startButton"
         startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.23)
         self.addChild(startSim)
-/*
-        let startSim = SKLabelNode(fontNamed: "Arial")
-        startSim.text = "START"
-        startSim.name = "startButton"
-        startSim.fontSize = 150
-        startSim.fontColor = SKColor.green
-        startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.20)
-        self.addChild(startSim)
-  */
+        /*
+         let startSim = SKLabelNode(fontNamed: "Arial")
+         startSim.text = "START"
+         startSim.name = "startButton"
+         startSim.fontSize = 150
+         startSim.fontColor = SKColor.green
+         startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.20)
+         self.addChild(startSim)
+         */
+    }
+    
+    func insertScenarios(Title: String, Birth: String, Weeks: Int, Weight: Double)  {
+        let key = self.scenRef.childByAutoId().key
+        let scenarios : NSDictionary =  ["Title" : Title,
+                                         "Birth" : Birth,
+                                         "Weeks" : Weeks,
+                                         "Weight" : Weight]
+        self.scenRef.updateChildValues(["/\(key)" : scenarios])
+        
+    }
+
+    func getScenarios() {
+        self.scenRef.observe(DataEventType.childAdded, with: { (snapshot: DataSnapshot) in
+            self.title = (snapshot.value as AnyObject).object(forKey: "Title") as! String
+            self.birth = (snapshot.value as AnyObject).object(forKey: "Birth") as! String
+            self.weeks = (snapshot.value as AnyObject).object(forKey: "Weeks") as! String
+            self.weight = (snapshot.value as AnyObject).object(forKey: "Weight") as! String
+            
+            })
     }
  
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -118,4 +131,5 @@ class HistoryScene: SKScene {
             }
         }
     }
+    
 }
