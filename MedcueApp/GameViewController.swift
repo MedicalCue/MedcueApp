@@ -12,16 +12,22 @@ import GameplayKit
 
 class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet var Scenarios: UIPickerView!
     var pick = 0
+    var scenName = ""
+    let hs = HistoryScene()
     
-    let scenario = ["Scenario: A", "Scenario: B", "Scenario: C", "Scenario: D"]
+    @IBOutlet var Scenarios: UIPickerView!
+    
+    let scenario = ["Scenario: A", "Scenario: B", "Scenario: C", "Scenario: D", "Scenario: E", "Scenario: F", "Scenario: G"]
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        let label = (view as? UILabel) ?? UILabel()
+        label.font = UIFont(name: "Lato-Regular", size: 20)
         return scenario.count
     }
     
@@ -33,22 +39,37 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = scenario[row]
+        pick = row
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         return myTitle
     }
  
     
     @IBAction func button(_ sender: UIButton) {
-        
-    /*
-        if scenario[pick] == "Scenario: A"  {
-            declare(0)
+                
+        if pick == 0 {
+            scenName = "Scenario A"
         }
-        if scenario[pick] == "Scenario: B"  {
-            declare(1)
+        if pick == 1 {
+            scenName = "Scenario B"
         }
-      */
-        
+        if pick == 2    {
+            scenName = "Scenario C"
+        }
+        if pick == 3    {
+            scenName = "Scenario D"
+        }
+        if pick == 4    {
+            scenName = "Scenario E"
+        }
+        if pick == 5    {
+            scenName = "Scenario F"
+        }
+        if pick == 6    {
+            scenName = "Scenario G"
+        }
+       
+        UserDefaults.standard.set(("\(scenName)"), forKey: "Name")
     }
     
     override func viewDidLoad() {

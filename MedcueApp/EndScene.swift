@@ -11,28 +11,45 @@ import SpriteKit
 
 class EndScene: SKScene {
     
-    
     override func didMove(to view: SKView) {
-        
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.addChild(background)
         
+        let logoLabel = SKSpriteNode(imageNamed: "logo")
+        logoLabel.size = CGSize(width: 1500/3.5, height: 224/3.5)
+        logoLabel.position = CGPoint(x: self.size.width*0.70, y: self.size.height*0.94)
+        self.addChild(logoLabel)
         
-        let finishedLabel = SKLabelNode(fontNamed: "Arial")
-        finishedLabel.text = "Finished!"
-        finishedLabel.fontSize = 150
+        let finishedLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        finishedLabel.text = "Completed"
+        finishedLabel.fontSize = 125
         finishedLabel.fontColor = SKColor.white
-        finishedLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        finishedLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.50)
         self.addChild(finishedLabel)
         
-        let repeatLabel = SKLabelNode(fontNamed: "Arial")
+        let scenLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        let scenName = UserDefaults.standard.string(forKey: "Name")!
+        scenLabel.text = "\(scenName)"
+        scenLabel.fontColor = SKColor.white
+        scenLabel.fontSize = 150
+        scenLabel.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.60)
+        self.addChild(scenLabel)
+        
+        let rect5 = SKShapeNode(rectOf: CGSize(width: 425, height: 150), cornerRadius: 10)
+        let color = UIColor(red: 0/255, green: 147/255, blue: 249/255, alpha: 1)
+        rect5.fillColor = color
+        rect5.strokeColor = color
+        rect5.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.405)
+        self.addChild(rect5)
+        
+        let repeatLabel = SKLabelNode(fontNamed: "Lato-Regular")
         repeatLabel.text = "Repeat"
         repeatLabel.name = "repeat"
         repeatLabel.fontSize = 100
         repeatLabel.fontColor = SKColor.white
-        repeatLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.40)
+        repeatLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.39)
         self.addChild(repeatLabel)
         
     }
@@ -55,7 +72,6 @@ class EndScene: SKScene {
         }
     
     }
-    
     
 }
 
