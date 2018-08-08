@@ -11,14 +11,15 @@ import GameplayKit
 import FirebaseDatabase
 
 class HistoryScene: SKScene {
-    
+        
     let scenarioLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let weeksLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let birthType = SKLabelNode(fontNamed: "Lato-Regular")
     let weightLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let extraLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let extraLabel2 = SKLabelNode(fontNamed: "Lato-Regular")
-    
+    var VCDelegate: ViewControllerDelegate?
+
     var scenName: String = ""
     
     var title = ""
@@ -33,12 +34,16 @@ class HistoryScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+     //   print("gvcd: \((VCDelegate))")
+     //   (self.VCDelegate?.menuButtonHidden(hidden: false))!
+     //   print("in hs: \((self.VCDelegate?.menuButtonHidden)!)")
+        
         let scenName = UserDefaults.standard.string(forKey: "Name")!
         print("scenName: \(scenName)")
       
         self.ref = Database.database().reference()
-        self.scenRef = self.ref.child("Scenarios")
-        getScenarios()
+        self.scenRef = self.ref.child("Histories")
+    //    getScenarios()
         
         if scenName == "Scenario A"    {
             insertScenarios(Title: "A", Birth: "Term Delivery", Weeks: "40", Weight: "3.6", Extra: "", Extra2: "")
@@ -133,9 +138,24 @@ class HistoryScene: SKScene {
                                          "Weight" : Weight,
                                          "Extra": Extra,
                                          "Extra2": Extra2]
+        
+        self.title = Title
+        self.birth = Birth
+        self.weeks = Weeks
+        self.weight = Weight
+        self.extra = Extra
+        self.extra2 = Extra2
+        
+        self.scenarioLabel.text = "Scenario: \(String(describing: self.title))"
+        self.weeksLabel.text = "\(String(describing: self.weeks)) weeks"
+        self.birthType.text = "\(String(describing: self.birth))"
+        self.weightLabel.text = "\(String(describing: self.weight)) kg"
+        self.extraLabel.text = "\(String(describing: self.extra))"
+        self.extraLabel2.text = "\(String(describing: self.extra2))"
         self.scenRef.updateChildValues(["/\(key)" : scenarios])
     }
     
+    /*
     func getScenarios() {
         
             self.scenRef.observeSingleEvent(of: .childAdded, with: {(snapshot: DataSnapshot) in
@@ -155,7 +175,7 @@ class HistoryScene: SKScene {
             
         })
     }
-    
+    */
  
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -164,7 +184,6 @@ class HistoryScene: SKScene {
             let pointOfTouch = touch.location(in:self)
             let nodeITapped = atPoint(pointOfTouch)
             if nodeITapped.name == "startButton"    {
-                
                 let sceneToMoveTo = GameScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 self.view!.presentScene(sceneToMoveTo)

@@ -26,6 +26,10 @@
                             <pickerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYj-r6-asL">
                                 <rect key="frame" x="0.0" y="192" width="320" height="216"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="NPt-4l-UcJ"/>
+                                    <constraint firstAttribute="height" constant="216" id="nSe-7H-1Ba"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="BV1-FR-VrT" id="9Qb-bu-OFR"/>
                                     <outlet property="delegate" destination="BV1-FR-VrT" id="iWg-aX-b3H"/>
@@ -51,8 +55,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROW-JP-XXU">
                                 <rect key="frame" x="135" y="367" width="50" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="EG4-mM-Ch0"/>
-                                    <constraint firstAttribute="height" constant="48" id="J36-Dv-FUq"/>
+                                    <constraint firstAttribute="height" constant="48" id="Fd1-ra-pLg"/>
+                                    <constraint firstAttribute="width" constant="50" id="hIR-Ia-kdX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="32"/>
                                 <state key="normal" title="GO">
@@ -67,14 +71,14 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="-41" id="DiP-Ts-F0K"/>
-                            <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="M99-EL-BeT"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="IpQ-oS-cCH"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="153" id="M0n-LQ-Fil"/>
                             <constraint firstItem="PYj-r6-asL" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="NWa-i5-oWv"/>
                             <constraint firstItem="PYj-r6-asL" firstAttribute="top" secondItem="nPc-Do-MS0" secondAttribute="bottom" constant="-65" id="QS9-Di-93o"/>
                             <constraint firstItem="lLs-kH-alI" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="WGY-Vt-JBF"/>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="ROW-JP-XXU" secondAttribute="bottom" constant="153" id="atR-l8-c1A"/>
                             <constraint firstItem="nPc-Do-MS0" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="g8N-N9-T5F"/>
                             <constraint firstItem="nPc-Do-MS0" firstAttribute="top" secondItem="lLs-kH-alI" secondAttribute="bottom" constant="-41" id="gHL-0y-EpE"/>
+                            <constraint firstItem="ROW-JP-XXU" firstAttribute="top" secondItem="PYj-r6-asL" secondAttribute="bottom" constant="-41" id="hF1-62-Ybo"/>
                             <constraint firstItem="lLs-kH-alI" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="7" id="hmW-an-w7T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
@@ -100,6 +104,7 @@
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
                                 <state key="normal" title="&lt;Main Menu"/>
                                 <connections>
+                                    <action selector="menu:" destination="wFJ-Mw-hsv" eventType="touchUpInside" id="JzJ-J5-JrS"/>
                                     <segue destination="BV1-FR-VrT" kind="show" id="CCv-T2-uBu"/>
                                 </connections>
                             </button>
@@ -116,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEP-hm-WXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="-510.32608695652181"/>
+            <point key="canvasLocation" x="991.875" y="-511.26760563380282"/>
         </scene>
     </scenes>
     <resources>

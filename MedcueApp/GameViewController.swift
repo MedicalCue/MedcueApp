@@ -9,12 +9,15 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import FirebaseDatabase
 
 class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
+
     var pick = 0
     var scenName = ""
-    let hs = HistoryScene()
+    var scenTitle = ""
+    var ref: DatabaseReference!
+    var scenRef: DatabaseReference!
     
     @IBOutlet var Scenarios: UIPickerView!
     
@@ -32,59 +35,60 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        pick = row
         return scenario[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pick = row
     }
     
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = scenario[row]
-        pick = row
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         return myTitle
     }
  
     
     @IBAction func button(_ sender: UIButton) {
-                
+ 
         if pick == 0 {
             scenName = "Scenario A"
+            scenTitle = "A"
         }
         if pick == 1 {
             scenName = "Scenario B"
+            scenTitle = "B"
         }
         if pick == 2    {
             scenName = "Scenario C"
+            scenTitle = "C"
         }
         if pick == 3    {
             scenName = "Scenario D"
+            scenTitle = "D"
         }
         if pick == 4    {
             scenName = "Scenario E"
+            scenTitle = "E"
         }
         if pick == 5    {
             scenName = "Scenario F"
+            scenTitle = "F"
         }
         if pick == 6    {
             scenName = "Scenario G"
+            scenTitle = "G"
         }
        
         UserDefaults.standard.set(("\(scenName)"), forKey: "Name")
+        UserDefaults.standard.set(("\(scenTitle)"), forKey: "Title")
     }
     
     override func viewDidLoad() {
       
         super.viewDidLoad()
 
-   /*
-        let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
-        let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .aspectFill
-        skView.presentScene(scene)
-   */
     }
 
     override var shouldAutorotate: Bool {

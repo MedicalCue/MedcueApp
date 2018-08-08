@@ -19,7 +19,6 @@
 		34882D4B20EAD3A6000E9424 /* MedcueAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D4A20EAD3A6000E9424 /* MedcueAppUITests.swift */; };
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
-		34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */ = {isa = PBXBuildFile; fileRef = 34CCD6C020F016F400FA1ED7 /* Scenarios.swift */; };
 		34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */; };
 		34E179D621092571003AD42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D521092571003AD42E /* Main.storyboard */; };
 		34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D721092588003AD42E /* LaunchScreen.storyboard */; };
@@ -28,7 +27,7 @@
 		34E179DE21094365003AD42E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E179DD21094365003AD42E /* GoogleService-Info.plist */; };
 		4E1AF7EFF658FCB81ADA3169 /* Pods_MedcueAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */; };
 		613F5604C13DF190DFD75892 /* Pods_MedcueApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AE98B8E21407EEF1C6A653 /* Pods_MedcueApp.framework */; };
-		62B193DC20F3BF7C0031AB02 /* baby-crying-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193DB20F3BF7C0031AB02 /* baby-crying-01.mp3 */; };
+		62B193DC20F3BF7C0031AB02 /* crying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193DB20F3BF7C0031AB02 /* crying.mp3 */; };
 		62B193DF20F3DE1A0031AB02 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */; };
 		62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */; };
 /* End PBXBuildFile section */
@@ -70,7 +69,6 @@
 		34882D4C20EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		34CCD6C020F016F400FA1ED7 /* Scenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
 		34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34E179D521092571003AD42E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		34E179D721092588003AD42E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,7 +76,7 @@
 		34E179DA2109269A003AD42E /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		34E179DD21094365003AD42E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58CAF46A730644BE31CE0BFC /* Pods-MedcueApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp.debug.xcconfig"; sourceTree = "<group>"; };
-		62B193DB20F3BF7C0031AB02 /* baby-crying-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "baby-crying-01.mp3"; path = "../../../Downloads/baby-crying-01.mp3"; sourceTree = "<group>"; };
+		62B193DB20F3BF7C0031AB02 /* crying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = crying.mp3; path = ../../../Downloads/crying.mp3; sourceTree = "<group>"; };
 		62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BabyCry.mp3; sourceTree = "<group>"; };
 		733505520DA53FA220991F7F /* Pods-MedcueApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,10 +145,9 @@
 				34882D2620EAD3A2000E9424 /* GameScene.sks */,
 				34882D2820EAD3A2000E9424 /* Actions.sks */,
 				34882D2A20EAD3A2000E9424 /* HistoryScene.swift */,
-				34882D5C20EBDD28000E9424 /* GameScene.swift */,
-				62B193DB20F3BF7C0031AB02 /* baby-crying-01.mp3 */,
+				62B193DB20F3BF7C0031AB02 /* crying.mp3 */,
 				343099C020EEB4DB00474138 /* EndScene.swift */,
-				34CCD6C020F016F400FA1ED7 /* Scenarios.swift */,
+				34882D5C20EBDD28000E9424 /* GameScene.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				34E179D521092571003AD42E /* Main.storyboard */,
 				34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */,
@@ -215,7 +212,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CCD6C120F016F400FA1ED7 /* Scenarios.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34882D2720EAD3A2000E9424 /* GameScene.sks in Resources */,
-				62B193DC20F3BF7C0031AB02 /* baby-crying-01.mp3 in Resources */,
+				62B193DC20F3BF7C0031AB02 /* crying.mp3 in Resources */,
 				34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */,
 				62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */,
 				34882D5B20EBD7AB000E9424 /* logo.png in Resources */,
