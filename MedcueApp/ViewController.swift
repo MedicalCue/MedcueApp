@@ -17,12 +17,6 @@ protocol ViewControllerDelegate : NSObjectProtocol {
 class ViewController: UIViewController, ViewControllerDelegate {
     
     let game = GameScene()
-
-    @IBAction func menu(_ sender: Any) {
-        game.exit()
-        print("vc exit")
-        print("isplayg: \(game.isPlaying)")
-    }
     
     override func viewDidLoad() {
         

@@ -18,7 +18,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="BV1-FR-VrT" customClass="GameViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="BV1-FR-VrT" customClass="GameViewController" customModule="SimCue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,7 +94,7 @@
         <!--View Controller-->
         <scene sceneID="04h-AV-g9o">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="wFJ-Mw-hsv" customClass="ViewController" customModule="MedcueApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="wFJ-Mw-hsv" customClass="ViewController" customModule="SimCue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mOo-Bb-eSn" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,7 +104,6 @@
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
                                 <state key="normal" title="&lt;Main Menu"/>
                                 <connections>
-                                    <action selector="menu:" destination="wFJ-Mw-hsv" eventType="touchUpInside" id="JzJ-J5-JrS"/>
                                     <segue destination="BV1-FR-VrT" kind="show" id="CCv-T2-uBu"/>
                                 </connections>
                             </button>

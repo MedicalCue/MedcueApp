@@ -53,7 +53,7 @@
 		2387CD736332C0F793E2BB61 /* Pods-MedcueAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppTests/Pods-MedcueAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedcueAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343099C020EEB4DB00474138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
-		34882D2120EAD3A2000E9424 /* MedcueApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedcueApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34882D2120EAD3A2000E9424 /* SimCue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimCue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D2420EAD3A2000E9424 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34882D2620EAD3A2000E9424 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		34882D2820EAD3A2000E9424 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -61,10 +61,10 @@
 		34882D2C20EAD3A2000E9424 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		34882D3120EAD3A6000E9424 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34882D3620EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34882D3B20EAD3A6000E9424 /* MedcueAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedcueAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34882D3B20EAD3A6000E9424 /* SimCueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimCueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D3F20EAD3A6000E9424 /* MedcueAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedcueAppTests.swift; sourceTree = "<group>"; };
 		34882D4120EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34882D4620EAD3A6000E9424 /* MedcueAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedcueAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34882D4620EAD3A6000E9424 /* SimCueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimCueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D4A20EAD3A6000E9424 /* MedcueAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedcueAppUITests.swift; sourceTree = "<group>"; };
 		34882D4C20EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -131,9 +131,9 @@
 		34882D2220EAD3A2000E9424 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34882D2120EAD3A2000E9424 /* MedcueApp.app */,
-				34882D3B20EAD3A6000E9424 /* MedcueAppTests.xctest */,
-				34882D4620EAD3A6000E9424 /* MedcueAppUITests.xctest */,
+				34882D2120EAD3A2000E9424 /* SimCue.app */,
+				34882D3B20EAD3A6000E9424 /* SimCueTests.xctest */,
+				34882D4620EAD3A6000E9424 /* SimCueUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,9 +218,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		34882D2020EAD3A2000E9424 /* MedcueApp */ = {
+		34882D2020EAD3A2000E9424 /* SimCue */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34882D4F20EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueApp" */;
+			buildConfigurationList = 34882D4F20EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCue" */;
 			buildPhases = (
 				0FCAA9182DFC2757F1CC1ABA /* [CP] Check Pods Manifest.lock */,
 				34882D1D20EAD3A2000E9424 /* Sources */,
@@ -233,14 +233,14 @@
 			);
 			dependencies = (
 			);
-			name = MedcueApp;
+			name = SimCue;
 			productName = MedcueApp;
-			productReference = 34882D2120EAD3A2000E9424 /* MedcueApp.app */;
+			productReference = 34882D2120EAD3A2000E9424 /* SimCue.app */;
 			productType = "com.apple.product-type.application";
 		};
-		34882D3A20EAD3A6000E9424 /* MedcueAppTests */ = {
+		34882D3A20EAD3A6000E9424 /* SimCueTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34882D5220EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueAppTests" */;
+			buildConfigurationList = 34882D5220EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCueTests" */;
 			buildPhases = (
 				D57A1278A473B27E985E563B /* [CP] Check Pods Manifest.lock */,
 				34882D3720EAD3A6000E9424 /* Sources */,
@@ -252,14 +252,14 @@
 			dependencies = (
 				34882D3D20EAD3A6000E9424 /* PBXTargetDependency */,
 			);
-			name = MedcueAppTests;
+			name = SimCueTests;
 			productName = MedcueAppTests;
-			productReference = 34882D3B20EAD3A6000E9424 /* MedcueAppTests.xctest */;
+			productReference = 34882D3B20EAD3A6000E9424 /* SimCueTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		34882D4520EAD3A6000E9424 /* MedcueAppUITests */ = {
+		34882D4520EAD3A6000E9424 /* SimCueUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34882D5520EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueAppUITests" */;
+			buildConfigurationList = 34882D5520EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCueUITests" */;
 			buildPhases = (
 				1B50BD7B7D4CBE2F493C1A21 /* [CP] Check Pods Manifest.lock */,
 				34882D4220EAD3A6000E9424 /* Sources */,
@@ -271,9 +271,9 @@
 			dependencies = (
 				34882D4820EAD3A6000E9424 /* PBXTargetDependency */,
 			);
-			name = MedcueAppUITests;
+			name = SimCueUITests;
 			productName = MedcueAppUITests;
-			productReference = 34882D4620EAD3A6000E9424 /* MedcueAppUITests.xctest */;
+			productReference = 34882D4620EAD3A6000E9424 /* SimCueUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -299,7 +299,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34882D1C20EAD3A2000E9424 /* Build configuration list for PBXProject "MedcueApp" */;
+			buildConfigurationList = 34882D1C20EAD3A2000E9424 /* Build configuration list for PBXProject "SimCue" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -312,9 +312,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34882D2020EAD3A2000E9424 /* MedcueApp */,
-				34882D3A20EAD3A6000E9424 /* MedcueAppTests */,
-				34882D4520EAD3A6000E9424 /* MedcueAppUITests */,
+				34882D2020EAD3A2000E9424 /* SimCue */,
+				34882D3A20EAD3A6000E9424 /* SimCueTests */,
+				34882D4520EAD3A6000E9424 /* SimCueUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -468,12 +468,12 @@
 /* Begin PBXTargetDependency section */
 		34882D3D20EAD3A6000E9424 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34882D2020EAD3A2000E9424 /* MedcueApp */;
+			target = 34882D2020EAD3A2000E9424 /* SimCue */;
 			targetProxy = 34882D3C20EAD3A6000E9424 /* PBXContainerItemProxy */;
 		};
 		34882D4820EAD3A6000E9424 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34882D2020EAD3A2000E9424 /* MedcueApp */;
+			target = 34882D2020EAD3A2000E9424 /* SimCue */;
 			targetProxy = 34882D4720EAD3A6000E9424 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -605,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MedcueApp.MedcueApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MedicalCue.SimCue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,7 +624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MedcueApp.MedcueApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MedicalCue.SimCue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -649,7 +649,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedcueApp.app/MedcueApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimCue.app/SimCue";
 			};
 			name = Debug;
 		};
@@ -671,7 +671,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedcueApp.app/MedcueApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimCue.app/SimCue";
 			};
 			name = Release;
 		};
@@ -720,7 +720,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34882D1C20EAD3A2000E9424 /* Build configuration list for PBXProject "MedcueApp" */ = {
+		34882D1C20EAD3A2000E9424 /* Build configuration list for PBXProject "SimCue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34882D4D20EAD3A6000E9424 /* Debug */,
@@ -729,7 +729,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34882D4F20EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueApp" */ = {
+		34882D4F20EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34882D5020EAD3A6000E9424 /* Debug */,
@@ -738,7 +738,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34882D5220EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueAppTests" */ = {
+		34882D5220EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCueTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34882D5320EAD3A6000E9424 /* Debug */,
@@ -747,7 +747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34882D5520EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "MedcueAppUITests" */ = {
+		34882D5520EAD3A6000E9424 /* Build configuration list for PBXNativeTarget "SimCueUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34882D5620EAD3A6000E9424 /* Debug */,

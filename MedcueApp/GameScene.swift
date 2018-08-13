@@ -54,11 +54,6 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        /*
-        print("gvcd: \((gameVCDelegate))")
-        (self.gameVCDelegate?.menuButtonHidden(hidden: true))!
-        print("in gs: \((self.gameVCDelegate?.menuButtonHidden)!)")*/
-
         let scenName = UserDefaults.standard.string(forKey: "Name")!
         let scenTitle = UserDefaults.standard.string(forKey: "Title")!
         print("scenName: \(scenName)")
