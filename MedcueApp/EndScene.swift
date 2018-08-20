@@ -52,6 +52,21 @@ class EndScene: SKScene {
         repeatLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.39)
         self.addChild(repeatLabel)
         
+        let quitLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        quitLabel.text = "Quit"
+        quitLabel.name = "quit"
+        quitLabel.fontSize = 100
+        quitLabel.fontColor = SKColor.white
+        quitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.20)
+        self.addChild(quitLabel)
+        
+        let part1 = UserDefaults.standard.string(forKey: "Part1")!
+        let part2 = UserDefaults.standard.string(forKey: "Part2")!
+        let part3 = UserDefaults.standard.string(forKey: "Part3")!
+        let part4 = UserDefaults.standard.string(forKey: "Part4")!
+        print("p1: \(part1), p2: \(part2), p3: \(part3), p4: \(part4)")
+
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,6 +82,12 @@ class EndScene: SKScene {
                 sceneToMoveTo.scaleMode = self.scaleMode
                 self.view!.presentScene(sceneToMoveTo)
                 
+            }
+            if nodeITapped.name == "quit"   {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let view = storyboard.instantiateViewController(withIdentifier: "first") as UIViewController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = view
             }
         
         }

@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		13A3E5658A9B27670A9B33FE /* Pods_MedcueAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4ACB566CE3039D44BCC6555 /* Pods_MedcueAppTests.framework */; };
+		341F94002124E0B7005E1464 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F93FF2124E0B7005E1464 /* FirstController.swift */; };
+		341F94022124EF37005E1464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 341F94012124EF37005E1464 /* GoogleService-Info.plist */; };
 		343099C120EEB4DB00474138 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343099C020EEB4DB00474138 /* EndScene.swift */; };
+		347455F6212734B80035C394 /* SuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347455F5212734B80035C394 /* SuccessController.swift */; };
 		34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D2420EAD3A2000E9424 /* AppDelegate.swift */; };
 		34882D2720EAD3A2000E9424 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34882D2620EAD3A2000E9424 /* GameScene.sks */; };
 		34882D2920EAD3A2000E9424 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34882D2820EAD3A2000E9424 /* Actions.sks */; };
@@ -19,12 +22,10 @@
 		34882D4B20EAD3A6000E9424 /* MedcueAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D4A20EAD3A6000E9424 /* MedcueAppUITests.swift */; };
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
-		34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */; };
 		34E179D621092571003AD42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D521092571003AD42E /* Main.storyboard */; };
 		34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D721092588003AD42E /* LaunchScreen.storyboard */; };
 		34E179DB2109269B003AD42E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D92109269A003AD42E /* Lato-Regular.ttf */; };
 		34E179DC2109269B003AD42E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E179DA2109269A003AD42E /* Lato-Bold.ttf */; };
-		34E179DE21094365003AD42E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E179DD21094365003AD42E /* GoogleService-Info.plist */; };
 		4E1AF7EFF658FCB81ADA3169 /* Pods_MedcueAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */; };
 		613F5604C13DF190DFD75892 /* Pods_MedcueApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AE98B8E21407EEF1C6A653 /* Pods_MedcueApp.framework */; };
 		62B193DC20F3BF7C0031AB02 /* crying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193DB20F3BF7C0031AB02 /* crying.mp3 */; };
@@ -52,7 +53,10 @@
 /* Begin PBXFileReference section */
 		2387CD736332C0F793E2BB61 /* Pods-MedcueAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppTests/Pods-MedcueAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedcueAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		341F93FF2124E0B7005E1464 /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
+		341F94012124EF37005E1464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		343099C020EEB4DB00474138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
+		347455F5212734B80035C394 /* SuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessController.swift; sourceTree = "<group>"; };
 		34882D2120EAD3A2000E9424 /* SimCue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimCue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D2420EAD3A2000E9424 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34882D2620EAD3A2000E9424 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,12 +73,10 @@
 		34882D4C20EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34E179D521092571003AD42E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		34E179D721092588003AD42E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34E179D92109269A003AD42E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		34E179DA2109269A003AD42E /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		34E179DD21094365003AD42E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58CAF46A730644BE31CE0BFC /* Pods-MedcueApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp.debug.xcconfig"; sourceTree = "<group>"; };
 		62B193DB20F3BF7C0031AB02 /* crying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = crying.mp3; path = ../../../Downloads/crying.mp3; sourceTree = "<group>"; };
 		62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -149,8 +151,9 @@
 				343099C020EEB4DB00474138 /* EndScene.swift */,
 				34882D5C20EBDD28000E9424 /* GameScene.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
+				341F93FF2124E0B7005E1464 /* FirstController.swift */,
+				347455F5212734B80035C394 /* SuccessController.swift */,
 				34E179D521092571003AD42E /* Main.storyboard */,
-				34CCD6C920F02BAB00FA1ED7 /* ViewController.swift */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
 				34E179DA2109269A003AD42E /* Lato-Bold.ttf */,
 				34E179D92109269A003AD42E /* Lato-Regular.ttf */,
@@ -158,7 +161,7 @@
 				34E179D721092588003AD42E /* LaunchScreen.storyboard */,
 				34882D3620EAD3A6000E9424 /* Info.plist */,
 				62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */,
-				34E179DD21094365003AD42E /* GoogleService-Info.plist */,
+				341F94012124EF37005E1464 /* GoogleService-Info.plist */,
 			);
 			path = MedcueApp;
 			sourceTree = "<group>";
@@ -326,13 +329,13 @@
 			files = (
 				34882D2720EAD3A2000E9424 /* GameScene.sks in Resources */,
 				62B193DC20F3BF7C0031AB02 /* crying.mp3 in Resources */,
+				341F94022124EF37005E1464 /* GoogleService-Info.plist in Resources */,
 				34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */,
 				62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */,
 				34882D5B20EBD7AB000E9424 /* logo.png in Resources */,
 				34882D3220EAD3A6000E9424 /* Assets.xcassets in Resources */,
 				34E179DC2109269B003AD42E /* Lato-Bold.ttf in Resources */,
 				34E179D621092571003AD42E /* Main.storyboard in Resources */,
-				34E179DE21094365003AD42E /* GoogleService-Info.plist in Resources */,
 				34882D2920EAD3A2000E9424 /* Actions.sks in Resources */,
 				34E179DB2109269B003AD42E /* Lato-Regular.ttf in Resources */,
 			);
@@ -438,11 +441,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CCD6CA20F02BAB00FA1ED7 /* ViewController.swift in Sources */,
+				341F94002124E0B7005E1464 /* FirstController.swift in Sources */,
 				34882D2B20EAD3A2000E9424 /* HistoryScene.swift in Sources */,
 				34882D2D20EAD3A2000E9424 /* GameViewController.swift in Sources */,
 				34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */,
 				34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */,
+				347455F6212734B80035C394 /* SuccessController.swift in Sources */,
 				343099C120EEB4DB00474138 /* EndScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

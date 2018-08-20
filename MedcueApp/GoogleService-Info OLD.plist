@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>613693506894-tehou9p7g575s48ncqdklijauvd5l0o8.apps.googleusercontent.com</string>
+	<string>613693506894-9ms4d1bc5oi9pf7aga3ggpmrbsbq83gf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.613693506894-tehou9p7g575s48ncqdklijauvd5l0o8</string>
+	<string>com.googleusercontent.apps.613693506894-9ms4d1bc5oi9pf7aga3ggpmrbsbq83gf</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAVCpBhxAa66jRCxw3nAz8_n2rhW8pP238</string>
 	<key>GCM_SENDER_ID</key>
@@ -23,17 +23,17 @@
 	<key>STORAGE_BUCKET</key>
 	<string>auth-da449.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:613693506894:ios:58a42a8ccfe88b32</string>
+	<string>1:613693506894:ios:0c7f1800a2f7aa36</string>
 	<key>DATABASE_URL</key>
 	<string>https://auth-da449.firebaseio.com</string>
 </dict>

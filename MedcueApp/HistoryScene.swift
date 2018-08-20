@@ -11,15 +11,15 @@ import GameplayKit
 import FirebaseDatabase
 
 class HistoryScene: SKScene {
-        
+    
+     var viewController: GameViewController!
+    
     let scenarioLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let weeksLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let birthType = SKLabelNode(fontNamed: "Lato-Regular")
     let weightLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let extraLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let extraLabel2 = SKLabelNode(fontNamed: "Lato-Regular")
-    var VCDelegate: ViewControllerDelegate?
-
     var scenName: String = ""
     
     var title = ""
@@ -34,12 +34,7 @@ class HistoryScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-     //   print("gvcd: \((VCDelegate))")
-     //   (self.VCDelegate?.menuButtonHidden(hidden: false))!
-     //   print("in hs: \((self.VCDelegate?.menuButtonHidden)!)")
-        
         let scenName = UserDefaults.standard.string(forKey: "Name")!
-        print("scenName: \(scenName)")
       
         self.ref = Database.database().reference()
         self.scenRef = self.ref.child("Histories")
@@ -67,6 +62,8 @@ class HistoryScene: SKScene {
             insertScenarios(Title: "G", Birth: "Vaginal Delivery", Weeks: "31", Weight: "1.8", Extra: "Maternal Fever", Extra2: "")
         }
         
+        UserDefaults.standard.set(("\(title)"), forKey: "Title")
+        
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.addChild(background)
@@ -75,6 +72,15 @@ class HistoryScene: SKScene {
         logoLabel.size = CGSize(width: 750, height: 112)
         logoLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.84)
         self.addChild(logoLabel)
+        
+        let menuButton = SKLabelNode(fontNamed: "Lato-Regular")
+        menuButton.text = "<Main Menu"
+        menuButton.name = "menu"
+        menuButton.fontSize = 80
+        menuButton.fontColor = SKColor.white
+        menuButton.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.927)
+        self.addChild(menuButton)
+
         
         scenarioLabel.text = "Scenario: \(String(describing: title))"
         scenarioLabel.fontSize = 180
@@ -183,10 +189,19 @@ class HistoryScene: SKScene {
             
             let pointOfTouch = touch.location(in:self)
             let nodeITapped = atPoint(pointOfTouch)
+            
             if nodeITapped.name == "startButton"    {
                 let sceneToMoveTo = GameScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 self.view!.presentScene(sceneToMoveTo)
+            }
+            if nodeITapped.name == "menu"   {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let view = storyboard.instantiateViewController(withIdentifier: "gvc") as UIViewController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = view
+
             }
         }
     }

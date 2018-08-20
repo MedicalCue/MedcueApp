@@ -12,7 +12,13 @@ import GameplayKit
 import FirebaseDatabase
 
 class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
+    let p1 = UserDefaults.standard.string(forKey: "Part1")!
+    let p2 = UserDefaults.standard.string(forKey: "Part2")!
+    let p3 = UserDefaults.standard.string(forKey: "Part3")!
+    let p4 = UserDefaults.standard.string(forKey: "Part4")!
+    
+    
     var pick = 0
     var scenName = ""
     var scenTitle = ""
@@ -21,7 +27,7 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBOutlet var Scenarios: UIPickerView!
     
-    let scenario = ["Scenario: A", "Scenario: B", "Scenario: C", "Scenario: D", "Scenario: E", "Scenario: F", "Scenario: G"]
+    let scenario = ["Scenario A", "Scenario B", "Scenario C", "Scenario D", "Scenario E", "Scenario F", "Scenario G"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -52,47 +58,26 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func button(_ sender: UIButton) {
  
-        if pick == 0 {
-            scenName = "Scenario A"
-            scenTitle = "A"
-        }
-        if pick == 1 {
-            scenName = "Scenario B"
-            scenTitle = "B"
-        }
-        if pick == 2    {
-            scenName = "Scenario C"
-            scenTitle = "C"
-        }
-        if pick == 3    {
-            scenName = "Scenario D"
-            scenTitle = "D"
-        }
-        if pick == 4    {
-            scenName = "Scenario E"
-            scenTitle = "E"
-        }
-        if pick == 5    {
-            scenName = "Scenario F"
-            scenTitle = "F"
-        }
-        if pick == 6    {
-            scenName = "Scenario G"
-            scenTitle = "G"
-        }
-       
+        scenName = scenario[pick]
+        
         UserDefaults.standard.set(("\(scenName)"), forKey: "Name")
-        UserDefaults.standard.set(("\(scenTitle)"), forKey: "Title")
-    }
-    
-    override func viewDidLoad() {
-      
-        super.viewDidLoad()
-
+        
+        let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
+        self.view = SKView()
+        let skView = self.view as! SKView
+        scene.viewController = self
+        scene.scaleMode = .aspectFill
+        skView.presentScene(scene)
+     
     }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        print("\n\nIN GVC\n\np1: \(String(describing: p1)), p2: \(String(describing: p2)), p3: \(String(describing: p3)), p4: \(String(describing: p4))")
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

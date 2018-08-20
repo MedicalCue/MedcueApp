@@ -50,13 +50,10 @@ class GameScene: SKScene {
     var sat = [Any]()
     var activity = [String]()
     
-    var gameVCDelegate: ViewControllerDelegate?
-    
     override func didMove(to view: SKView) {
         
         let scenName = UserDefaults.standard.string(forKey: "Name")!
         let scenTitle = UserDefaults.standard.string(forKey: "Title")!
-        print("scenName: \(scenName)")
         
         self.ref = Database.database().reference()
         self.scenRef = self.ref.child("Simulations")
@@ -250,6 +247,14 @@ class GameScene: SKScene {
         playButton.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.052)
         self.addChild(playButton)
         
+        let backButton = SKLabelNode(fontNamed: "Lato-Regular")
+        backButton.text = "<Back"
+        backButton.name = "back"
+        backButton.fontSize = 90
+        backButton.fontColor = SKColor.white
+        backButton.position = CGPoint(x: self.size.width*0.22, y: self.size.height*0.927)
+        self.addChild(backButton)
+        
         let rect5 = SKShapeNode(rectOf: CGSize(width: 250, height: 127.5), cornerRadius: 10)
         rect5.fillColor = UIColor.red
         rect5.strokeColor = UIColor.red
@@ -286,7 +291,6 @@ class GameScene: SKScene {
             player?.numberOfLoops = -1
             isPlaying = true
         }
-        print("isplaying: \(isPlaying)")
     }
     
     func insertScenarios(Title: String, Times: [Double], Resp: [String], Pulse: [Int], Sound: [String], Sat: [Any], Activity: [String])    {
@@ -341,7 +345,7 @@ class GameScene: SKScene {
                     player?.numberOfLoops = -1
                     isPlaying = true
                 }
-                else if sound[reference] == "Silent" || sound[reference] == "Quiet" || sound[reference] == "Apnea"  {
+                else if sound[reference] == "Silent" || sound[reference] == "Quiet" || sound[reference] == "Apnea" || sound[reference] == "Grunt"  {
                     player?.pause()
                     isPlaying = false
                 }
@@ -448,6 +452,15 @@ class GameScene: SKScene {
             if nodeITapped.name == "finish" {
                 exit()
             }
+            if nodeITapped.name == "back"   {
+                pauseTimer()
+                player?.stop()
+                isPlaying = false
+                let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
+                let skView = self.view! as SKView
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene)
+            }
         }
     }
     
@@ -522,11 +535,9 @@ class GameScene: SKScene {
     }
     
     func exit()  {
-        print("in exit")
         pauseTimer()
         player?.stop()
         isPlaying = false
-        print("isplaying: \(isPlaying)")
         let waitToChangeScene = SKAction.wait(forDuration: 0.25)
         let changeSceneAction = SKAction.run(changeScene)
         let changeSequence = SKAction.sequence([waitToChangeScene, changeSceneAction])
