@@ -16,7 +16,7 @@ class GameScene: SKScene {
     
     var player: AVAudioPlayer?
     var ref: DatabaseReference!
-    var scenRef: DatabaseReference!
+    var gameRef: DatabaseReference!
     var scenName: String = ""
     var scenTitle: String = ""
     
@@ -43,22 +43,24 @@ class GameScene: SKScene {
     
     let cry = Bundle.main.path(forResource: "crying", ofType: "mp3")
 
-    var run_time = [Double]()
-    var resp = [String]()
-    var sound = [String]()
-    var pulse = [Int]()
-    var sat = [Any]()
-    var activity = [String]()
+    var run_time = [0.0, 10.0]
+    var resp = [""]
+    var sound = [""]
+    var pulse = [0]
+    var sat = [""] as [Any]
+    var activity = [""]
     
     override func didMove(to view: SKView) {
         
-        let scenName = UserDefaults.standard.string(forKey: "Name")!
-        let scenTitle = UserDefaults.standard.string(forKey: "Title")!
+        scenName = UserDefaults.standard.string(forKey: "Name")!
+        scenTitle = UserDefaults.standard.string(forKey: "Title")!
         
         self.ref = Database.database().reference()
-        self.scenRef = self.ref.child("Simulations")
+        self.gameRef = self.ref.child("Simulations")
         
         getScenarios(scenName: scenName)
+        print("got out of get")
+        
         startTimer()
 
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
@@ -250,9 +252,9 @@ class GameScene: SKScene {
         let backButton = SKLabelNode(fontNamed: "Lato-Regular")
         backButton.text = "<Back"
         backButton.name = "back"
-        backButton.fontSize = 90
+        backButton.fontSize = 77
         backButton.fontColor = SKColor.white
-        backButton.position = CGPoint(x: self.size.width*0.22, y: self.size.height*0.927)
+        backButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.918)
         self.addChild(backButton)
         
         let rect5 = SKShapeNode(rectOf: CGSize(width: 250, height: 127.5), cornerRadius: 10)
@@ -292,27 +294,13 @@ class GameScene: SKScene {
             isPlaying = true
         }
     }
-    
-    func insertScenarios(Title: String, Times: [Double], Resp: [String], Pulse: [Int], Sound: [String], Sat: [Any], Activity: [String])    {
-        let key = self.scenRef.child("Scenario \(Title)").key
-        let scenarios: Dictionary = ["Times": Times,
-                                     "Resp": Resp,
-                                     "Pulse": Pulse,
-                                     "Sound": Sound,
-                                     "Sat": Sat,
-                                     "Activity": Activity]
-        
-        self.run_time = Times
-        self.resp = Resp
-        self.pulse = Pulse
-        self.sound = Sound
-        self.sat = Sat
-        self.activity = Activity
-        self.scenRef.updateChildValues(["/\(key)": scenarios])
-    }
 
     func changeValue()  {
         reference = idx + 1
+        
+        print("\n\nruntime: \(run_time)\n")
+        print("ref: \(reference)")
+        print("current: \(scenName)")
         
         if elapsed >= run_time[reference]  {
             if run_time[reference] == run_time.last  {
@@ -349,20 +337,6 @@ class GameScene: SKScene {
                     player?.pause()
                     isPlaying = false
                 }
-                
-                /*
-                let crySound = SKAction.playSoundFileNamed("baby-crying-01", waitForCompletion: false)
-                self.run(crySound)
-                
-                if sound[reference] == "Cry" || sound[reference] == "Crying" {
-                    self.run(crySound, withKey: "crySound")
-                }
-                    
-                else if sound[reference] == "Silent" {
-                    if self.audioPlayer.isPlaying {
-                        self.removeAction(forKey: "crySound")
-                    }
-                }*/
                 
                 if resp[reference] == "Chest Rise" || resp[reference] == "No Rise"  {
                     if resp[reference] == "Chest Rise"  {
@@ -545,68 +519,93 @@ class GameScene: SKScene {
     }
     
     func getScenarios(scenName: String) {
-        if scenName == "Scenario A" {
-            insertScenarios(Title: "A",
-                            Times: [0,10,20,40,50,60,70,80,90,100,110,120,130,160,180,200],
-                            Resp: ["Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate" ],
-                            Pulse: [110,140,160,180,190,160,165,150,145,155,145,145,160,150,145,150],
-                            Sound: ["Cry", "Cry", "Cry", "Cry", "Quiet", "Quiet", "Quiet", "Quiet", "Quiet","Quiet","Weak Cry","Weak Cry", "Crying", "Crying", "Crying", "Crying"],
-                            Sat: [0,0,"--",55,50,50,52,60,55,60,65,65,70,80,85,85],
-                            Activity: ["Motion", "Motion", "Motion", "Poor Tone", "Limp", "Limp", "Limp", "Moving", "Moving", "Moving", "Moving", "Good Tone", "Good Tone", "Good Tone", "Good Tone", "Good Tone"])
-        }
-        if scenName == "Scenario B" {
-            insertScenarios(Title: "B",
-                            Times: [0,10,20,40,50,60,70,80,90,100,110,120,130,160,180,200],
-                            Resp: ["Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Labored", "Adequate", "Adequate", "Adequate", "Adequate", "Adequate"],
-                            Pulse: [120,140,160,180,110,105,110,120,125,125,135,145,160,150,145,150],
-                            Sound: ["Cry", "Cry", "Grunt", "Grunt", "Grunt", "Silent", "Silent", "Silent", "Silent","Silent","Weak Cry","Weak Cry", "Crying", "Crying", "Crying", "Crying"],
-                            Sat: ["0", "0", "--", "55", "50", "50", "52", "60", "55", "60", "55", "65", "70", "80", "85", "85"],
-                            Activity: ["Motion", "Motion", "Motion", "Poor Tone", "Limp", "Limp", "Limp", "Moving", "Moving", "Moving", "Moving", "Good Tone", "Good Tone", "Good Tone", "Good Tone", "Good Tone"])
-        }
-        if scenName == "Scenario C" {
-            insertScenarios(Title: "C",
-                            Times: [0,10,20,40,50,60,70,80,90,100,110,120,150,160,180,220,230,240],
-                            Resp: ["Labored", "Labored", "Labored", "Labored", "Ap/No Rise", "Ap/No Rise", "Ap/No Rise", "No Rise","No Rise", "No Rise", "Chest Rise", "Chest Rise", "Chest Rise", "Labored", "Labored", "Adequate", "Adequate", "Adequate"],
-                            Pulse: [100,115,105,105,95,85,90,90,95,97,92,95,105,160,175,150,155,150],
-                            Sound: ["Weak Cry", "Weak Cry", "Silent", "Silent", "Silent", "Silent", "Apnea", "Apnea", "Silent","Silent","Weak Cry","Weak Cry", "Grunt", "Grunt", "Weak Cry", "Crying", "Crying", "Crying"],
-                            Sat: ["0", "0", "--", "55", "50", "50", "55", "60", "55", "60", "65", "65", "70", "80", "85","85","90","90"],
-                            Activity: ["Poor Tone", "Motion", "Motion", "Poor Tone", "Limp", "Limp", "Limp", "Limp", "Poor Tone", "Poor Tone", "Poor Tone","Some Tone", "Good Tone", "Good Tone", "Good Tone", "Good Tone", "Good Tone", "Good Tone"])
-        }
-        if scenName == "Scenario D" {
-            insertScenarios(Title: "D",
-                            Times: [0,10,20,40,50,60,70,80,90,100,110,120,150,160,190,200,220,240],
-                            Resp: ["Apnea", "Apnea", "Apnea", "Ap/No Rise", "Ap/No Rise", "Ap/No Rise", "Ap/No Rise", "No Rise", "No Rise", "Chest Rise", "Chest Rise", "Chest Rise", "Rise/Apnea", "Rise/Apnea","Rise/Apnea","Rise/Apnea","Rise/Apnea","Adequate"],
-                            Pulse: [105,102,105,106,102,105,90,90,95,85,90,93,97,92,105,150,155,150],
-                            Sound: ["Silent", "Silent", "Silent", "Silent", "Silent", "Silent", "Apnea", "Apnea", "Silent","Silent","Silent","Silent", "Silent", "Silent", "Silent", "Crying","Crying", "Crying"],
-                            Sat: ["0", "0", "--", "55", "50", "50", "55", "60", "55", "60", "60", "65","70","80","85","85","90","90"],
-                            Activity: ["Poor Tone", "Poor Tone", "Poor Tone", "Poor Tone", "Limp", "Limp","Limp","Limp","Weak Tone", "Weak Tone","Weak Tone","Weak Tone","Weak Tone","Some Tone","Good Tone","Good Tone","Good Tone","Good Tone"])
-        }
-        if scenName == "Scenario E" {
-            insertScenarios(Title: "E",
-                            Times: [0,10,20,40,50,60,70,80,90,100,110,120,130,160,180,210,230,270],
-                            Resp: ["Labored","Labored","Labored","Labored","Labored","Ap/No Rise","Ap/No Rise","No Rise","No Rise","No Rise", "No Rise","No Rise","No Rise","No Rise","No Rise","No Rise","Chest Rise","Adequate"],
-                            Pulse: [120,115,105,105,102,105,90,90,95,85,90,85,80,70,90,95,105,150],
-                            Sound: ["Weak Cry", "Weak Cry", "Grunt", "Grunt", "Silent", "Silent", "Apnea", "Apnea", "Silent","Silent","Silent","Silent", "Silent", "Silent", "Silent", "Silent","Weak Cry", "Crying"],
-                            Sat: ["0","0","--","55","50","50","55","60","55","60","65","65","70","60","55","85","90","90"],
-                            Activity: ["Poor Tone", "Motion", "Motion", "Poor Tone", "Poor Tone", "Limp", "Limp", "Limp", "Weak Tone","Weak Tone", "Weak Tone","Weak Tone", "Weak Tone", "Weak Tone", "Weak Tone", "Weak Tone", "Weak Tone", "Moving"])
-        }
-        if scenName == "Scenario F" {
-            insertScenarios(Title: "F",
-                            Times: [0,10,20,30,50,60,70,80,90,100,110,120,130,160,180,200,230,240,270],
-                            Resp: ["Labored","Labored","Labored","Labored","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise"],
-                            Pulse: [120,140,160,180,90,75,65,55,55,50,55,45,50,30,40,50,55,70,90],
-                            Sound: ["Cry", "Cry", "Grunt", "Grunt", "Grunt", "Silent", "Silent", "Silent", "Silent","Silent","Silent","Silent", "Silent", "Silent", "Silent", "Silent","Silent","Silent", "Silent","Silent"],
-                            Sat: ["0","0","--","55","50","50","52","--","--","--","--","67","--","--","--","--","--","70","98"],
-                            Activity: ["Motion","Motion","Motion","Poor Tone","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp","Limp"])
-        }
-        if scenName == "Scenario G" {
-            insertScenarios(Title: "G",
-                            Times: [0,10,25,40,55,70,85,100,115,130,145,160,175,190,205,220,240,270],
-                            Resp: ["Gasp","Apnea","Ap/No Rise","Ap/No Rise","Ap/No Rise","No Rise","No Rise","No Rise","No Rise","No Rise","No Rise", "Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise","Chest Rise"],
-                            Pulse: [50,40,30,20,50,50,40,30,30,50,30,45,40,45,50,45,30,20],
-                            Sound: ["Apnea","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent","Silent"],
-                            Sat: ["--", "--", "--", "55", "--", "50", "--", "--", "55", "50", "--", "50", "--", "55", "--", "--", "75", "--"],
-                            Activity: ["Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp", "Limp"])
-        }
+        print("got in get")
+        print("scenname: \(scenName)")
+        
+            self.gameRef.child("\(scenName)").observe(.value, with: {(snapshot: DataSnapshot) in
+            print("got here")
+            guard var dict = snapshot.value as? [String:Any] else {
+                print("Error")
+                return
+            }
+            print("snapshot:\n\n \(snapshot)\n")
+            
+            self.run_time = dict["Times"] as! [Double]
+            self.resp = dict["Resp"] as! [String]
+            self.pulse = dict["Pulse"] as! [Int]
+            self.sound = dict["Sound"] as! [String]
+            self.sat = dict["Sat"] as! [Any]
+            self.activity = dict["Activity"] as! [String]
+                
+            self.respValue.text = "\(self.resp[0])"
+                if self.resp[0] == "Chest Rise"  {
+                    self.respValue.position = CGPoint(x: self.size.width*0.32, y: self.size.height*0.60)
+                    self.respValue.text = "Chest"
+                    self.respValue2.text = "Rise"
+                }
+                if self.resp[0] == "No Rise" {
+                    self.respValue.position = CGPoint(x: self.size.width*0.31, y: self.size.height*0.60)
+                    self.respValue.text = "No"
+                    self.respValue2.text = "Rise"
+                }
+                if self.resp[0] == "Ap/No Rise"  {
+                    self.respValue.text = "Ap/"
+                    self.respValue2.text = "No Rise"
+                    self.respValue.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.60)
+                    self.respValue2.position = CGPoint(x: self.size.width*0.32, y: self.size.height*0.53)
+                }
+                if self.resp[0] == "Rise/Apnea" {
+                    self.respValue.text = "Rise/"
+                    self.respValue2.text = "Apnea"
+                    self.respValue.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.60)
+                    self.respValue2.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.53)
+                }
+                if self.resp[0] == "Adequate"    {
+                    self.respValue.fontSize = 100
+                }
+            self.pulseValue.text = "\(self.pulse[0])"
+                if self.pulse[0] > 99    {
+                    self.pulseValue.position = CGPoint(x: self.size.width*0.62, y: self.size.height*0.58)
+                }
+                else    {
+                    self.pulseValue.position = CGPoint(x: self.size.width*0.63, y: self.size.height*0.58)
+                }
+            self.soundLabel.text = "\(self.sound[0])"
+                if self.sound[0] == "Cry" || self.sound[0] == "Crying" {
+                    self.player?.play()
+                    self.player?.volume = 1.0
+                    self.player?.numberOfLoops = -1
+                    self.isPlaying = true
+                }
+                else if self.sound[0] == "Weak Cry"  {
+                    self.player?.play()
+                    self.player?.volume = 0.25
+                    self.player?.numberOfLoops = -1
+                    self.isPlaying = true
+                }
+            self.satValue.text = "\(self.sat[0])"
+            self.activityValue.text = "\(self.activity[0])"
+                if self.activity[0].range(of: "Tone") != nil  {
+                    if self.activity[0] == "Some Tone"  {
+                        self.activityValue.text = "Some"
+                    }
+                    if self.activity[0] == "Poor Tone"   {
+                        self.activityValue.text = "Poor"
+                    }
+                    if self.activity[0] == "Good Tone"   {
+                        self.activityValue.text = "Good"
+                    }
+                    if self.activity[0] == "Weak Tone"   {
+                        self.activityValue.text = "Weak"
+                    }
+                    self.activityValue2.text = "Tone"
+                    self.activityValue.position = CGPoint(x: self.size.width*0.68, y: self.size.height*0.27)
+                    self.activityValue2.position = CGPoint(x: self.size.width*0.68, y: self.size.height*0.20)
+                }
+                else    {
+                    self.activityValue.text = "\(self.activity[0])"
+                    self.activityValue.position = CGPoint(x: self.size.width*0.68, y: self.size.height*0.25)
+                }
+        })
     }
 }

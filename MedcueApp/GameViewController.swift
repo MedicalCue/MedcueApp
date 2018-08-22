@@ -12,32 +12,37 @@ import GameplayKit
 import FirebaseDatabase
 
 class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    let p1 = UserDefaults.standard.string(forKey: "Part1")!
-    let p2 = UserDefaults.standard.string(forKey: "Part2")!
-    let p3 = UserDefaults.standard.string(forKey: "Part3")!
-    let p4 = UserDefaults.standard.string(forKey: "Part4")!
-    
-    
+        
     var pick = 0
     var scenName = ""
     var scenTitle = ""
     var ref: DatabaseReference!
     var scenRef: DatabaseReference!
-    
+    var scen = [String]()
+
     @IBOutlet var Scenarios: UIPickerView!
     
-    let scenario = ["Scenario A", "Scenario B", "Scenario C", "Scenario D", "Scenario E", "Scenario F", "Scenario G"]
-    
+    var scenario = [""]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let label = (view as? UILabel) ?? UILabel()
-        label.font = UIFont(name: "Lato-Regular", size: 20)
-        return scenario.count
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Lato-Regular", size: 26)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = scenario[row]
+        pickerLabel?.textColor = UIColor.white
+        
+        return pickerLabel!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 35
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -48,10 +53,14 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         pick = row
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return scenario.count
+    }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = scenario[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        
         return myTitle
     }
  
@@ -61,7 +70,7 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         scenName = scenario[pick]
         
         UserDefaults.standard.set(("\(scenName)"), forKey: "Name")
-        
+                
         let scene = HistoryScene(size: CGSize(width: 1536, height: 2048))
         self.view = SKView()
         let skView = self.view as! SKView
@@ -77,7 +86,22 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        print("\n\nIN GVC\n\np1: \(String(describing: p1)), p2: \(String(describing: p2)), p3: \(String(describing: p3)), p4: \(String(describing: p4))")
+        
+        self.ref = Database.database().reference()
+        self.scenRef = self.ref.child("Scenarios")
+        
+        self.scenRef.observe(.value, with: {(snapshot: DataSnapshot) in
+            guard let scen = (snapshot.value) as? [String] else {
+                print("Error")
+                return
+            }
+            self.scenario = scen
+            print("scenario: \(self.scenario)")
+            print("scen: \(scen)")
+            self.Scenarios.reloadAllComponents()
+            
+        })
+        
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

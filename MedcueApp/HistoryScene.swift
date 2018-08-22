@@ -34,33 +34,11 @@ class HistoryScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        let scenName = UserDefaults.standard.string(forKey: "Name")!
+        scenName = UserDefaults.standard.string(forKey: "Name")!
       
         self.ref = Database.database().reference()
         self.scenRef = self.ref.child("Histories")
-    //    getScenarios()
-        
-        if scenName == "Scenario A"    {
-            insertScenarios(Title: "A", Birth: "Term Delivery", Weeks: "40", Weight: "3.6", Extra: "", Extra2: "")
-        }
-        if scenName == "Scenario B"    {
-            insertScenarios(Title: "B", Birth: "C-Section", Weeks: "35", Weight: "3.5", Extra: "Class II Strip", Extra2: "")
-        }
-        if scenName == "Scenario C" {
-            insertScenarios(Title: "C", Birth: "Precip Delivery", Weeks: "38", Weight: "4.5", Extra: "Meconium", Extra2: "Diabetic Mom")
-        }
-        if scenName == "Scenario D" {
-            insertScenarios(Title: "D", Birth: "Urgent C-Section", Weeks: "38", Weight: "2.9", Extra: "Preclampsia", Extra2: "Magnesium")
-        }
-        if scenName == "Scenario E" {
-            insertScenarios(Title: "E", Birth: "Urgent C-Section", Weeks: "32", Weight: "1.8-2", Extra: "Class II Fetal Strip", Extra2: "")
-        }
-        if scenName == "Scenario F" {
-            insertScenarios(Title: "F", Birth: "C-Section", Weeks: "36", Weight: "3.2", Extra: "PROM, Class I Strip", Extra2: "Failure to Progress")
-        }
-        if scenName == "Scenario G" {
-            insertScenarios(Title: "G", Birth: "Vaginal Delivery", Weeks: "31", Weight: "1.8", Extra: "Maternal Fever", Extra2: "")
-        }
+        getScenarios(scenName: scenName)
         
         UserDefaults.standard.set(("\(title)"), forKey: "Title")
         
@@ -74,14 +52,13 @@ class HistoryScene: SKScene {
         self.addChild(logoLabel)
         
         let menuButton = SKLabelNode(fontNamed: "Lato-Regular")
-        menuButton.text = "<Main Menu"
+        menuButton.text = "<Back"
         menuButton.name = "menu"
-        menuButton.fontSize = 80
+        menuButton.fontSize = 77
         menuButton.fontColor = SKColor.white
-        menuButton.position = CGPoint(x: self.size.width*0.30, y: self.size.height*0.927)
+        menuButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.918)
         self.addChild(menuButton)
 
-        
         scenarioLabel.text = "Scenario: \(String(describing: title))"
         scenarioLabel.fontSize = 180
         scenarioLabel.fontColor = SKColor.white
@@ -134,44 +111,21 @@ class HistoryScene: SKScene {
         self.addChild(startSim)
         
     }
-    
-    
-    func insertScenarios(Title: String, Birth: String, Weeks: String, Weight: String, Extra: String, Extra2: String)  {
-        let key = self.scenRef.child("Scenario \(Title)").key
-        let scenarios : Dictionary =  ["Title" : Title,
-                                         "Birth" : Birth,
-                                         "Weeks" : Weeks,
-                                         "Weight" : Weight,
-                                         "Extra": Extra,
-                                         "Extra2": Extra2]
-        
-        self.title = Title
-        self.birth = Birth
-        self.weeks = Weeks
-        self.weight = Weight
-        self.extra = Extra
-        self.extra2 = Extra2
-        
-        self.scenarioLabel.text = "Scenario: \(String(describing: self.title))"
-        self.weeksLabel.text = "\(String(describing: self.weeks)) weeks"
-        self.birthType.text = "\(String(describing: self.birth))"
-        self.weightLabel.text = "\(String(describing: self.weight)) kg"
-        self.extraLabel.text = "\(String(describing: self.extra))"
-        self.extraLabel2.text = "\(String(describing: self.extra2))"
-        self.scenRef.updateChildValues(["/\(key)" : scenarios])
-    }
-    
-    /*
-    func getScenarios() {
-        
-            self.scenRef.observeSingleEvent(of: .childAdded, with: {(snapshot: DataSnapshot) in
-            self.title = (snapshot.value as AnyObject).object(forKey: "Title") as! String
-            self.birth = (snapshot.value as AnyObject).object(forKey: "Birth") as! String
-            self.weeks = (snapshot.value as AnyObject).object(forKey: "Weeks") as! String
-            self.weight = (snapshot.value as AnyObject).object(forKey: "Weight") as! String
-            self.extra = (snapshot.value as AnyObject).object(forKey: "Extra") as! String
-            self.extra2 = (snapshot.value as AnyObject).object(forKey: "Extra2") as! String
-
+   
+    func getScenarios(scenName: String) {
+        self.scenRef.child("\(scenName)").observe(.value, with: {(snapshot: DataSnapshot) in
+            guard var dict = snapshot.value as? [String:Any] else {
+                print("Error")
+                return
+            }    
+            print("got here hx")
+            self.title = (dict["Title"])! as! String
+            self.birth = (dict["Birth"])! as! String
+            self.weeks = (dict["Weeks"])! as! String
+            self.weight = (dict["Weight"])! as! String
+            self.extra = (dict["Extra"])! as! String
+            self.extra2 = (dict["Extra2"])! as! String
+            
             self.scenarioLabel.text = "Scenario: \(String(describing: self.title))"
             self.weeksLabel.text = "\(String(describing: self.weeks)) weeks"
             self.birthType.text = "\(String(describing: self.birth))"
@@ -181,7 +135,7 @@ class HistoryScene: SKScene {
             
         })
     }
-    */
+    
  
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         

@@ -22,6 +22,7 @@
 		34882D4B20EAD3A6000E9424 /* MedcueAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D4A20EAD3A6000E9424 /* MedcueAppUITests.swift */; };
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
+		34893694212B90D8002642DB /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34893693212B90D8002642DB /* SignupController.swift */; };
 		34E179D621092571003AD42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D521092571003AD42E /* Main.storyboard */; };
 		34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D721092588003AD42E /* LaunchScreen.storyboard */; };
 		34E179DB2109269B003AD42E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D92109269A003AD42E /* Lato-Regular.ttf */; };
@@ -56,7 +57,7 @@
 		341F93FF2124E0B7005E1464 /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
 		341F94012124EF37005E1464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		343099C020EEB4DB00474138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
-		347455F5212734B80035C394 /* SuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessController.swift; sourceTree = "<group>"; };
+		347455F5212734B80035C394 /* SuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		34882D2120EAD3A2000E9424 /* SimCue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimCue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34882D2420EAD3A2000E9424 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34882D2620EAD3A2000E9424 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		34882D4C20EAD3A6000E9424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		34893693212B90D8002642DB /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		34E179D521092571003AD42E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		34E179D721092588003AD42E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34E179D92109269A003AD42E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				34882D5C20EBDD28000E9424 /* GameScene.swift */,
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				341F93FF2124E0B7005E1464 /* FirstController.swift */,
+				34893693212B90D8002642DB /* SignupController.swift */,
 				347455F5212734B80035C394 /* SuccessController.swift */,
 				34E179D521092571003AD42E /* Main.storyboard */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
@@ -444,6 +447,7 @@
 				341F94002124E0B7005E1464 /* FirstController.swift in Sources */,
 				34882D2B20EAD3A2000E9424 /* HistoryScene.swift in Sources */,
 				34882D2D20EAD3A2000E9424 /* GameViewController.swift in Sources */,
+				34893694212B90D8002642DB /* SignupController.swift in Sources */,
 				34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */,
 				34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */,
 				347455F6212734B80035C394 /* SuccessController.swift in Sources */,

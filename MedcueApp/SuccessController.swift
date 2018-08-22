@@ -9,46 +9,77 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import FirebaseDatabase
 
-class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var partName1 = ""
-    var partName2 = ""
-    var partName3 = ""
-    var partName4 = ""
+    var ref: DatabaseReference!
+    var successRef: DatabaseReference!
+
     var participants = [String]()
+    var partList: [String] = []
     
     @IBOutlet var part1: UIPickerView!
-    @IBOutlet var part2: UIPickerView!
-    @IBOutlet var part3: UIPickerView!
-    @IBOutlet var part4: UIPickerView!
+    @IBOutlet var table: UITableView!
+    @IBOutlet var add: UIButton!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         
+        self.ref = Database.database().reference()
+        self.successRef = self.ref.child("Participants")
+        
         let codeName = UserDefaults.standard.string(forKey: "Code")!
-
         getInfo(codeName: (codeName))
         
         part1.delegate = self
-        part2.delegate = self
-        part3.delegate = self
-        part4.delegate = self
         part1.dataSource = self
-        part2.dataSource = self
-        part3.dataSource = self
-        part4.dataSource = self
+        table.delegate = self
+        table.dataSource = self
+        
+        add.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        add.layer.cornerRadius = 15
         
     }
     
-    func getInfo(codeName: String)  {
-        if codeName == "dummy"  {
-            participants = ["Select Participant", "Ardella Phoa", "Ari Brown", "Marie Alexander", "Peter David", "Peter Coehlo"]
+
+    @IBAction func add(_ sender: Any) {
+        
+        if partList.count == 4  {
+            print("returning")
+            part1.selectRow(0, inComponent: 0, animated: true)
+            return
         }
-        if codeName == "scripps"    {
-            participants = ["Select Participant", "Elena Aijala", "Rhoda Badillo", "Elizabeth Cruel", "Charlotte Delacruz", "Taya Delaney", "Irene Eisenhauer", "Michelle Evers", "Larisa FitzGerald", "Jenny Flickinger", "Martha Fudala", "Desiree Garner", "Danielle Hurtado", "Julie Joslin", "Marjorie Kubitz", "Alicia Lagendijk", "Michelle Landy", "Annette Linares", "MaryAnn Lugod-Manalad", "Heidi Mauricio", "Christopher McGonegal", "Michelle Merkel", "Ashley Milcarek", "Marsi Perez", "Jillian Pillsbury", "Myrna Poblete", "Marc Russell", "Jamie Sahagun", "Dorthe Smith", "Elizabeth Spooner", "Annette St. Hilaire", "Tracey Stellas", "Mia Ursini", "Sharon Wilson", "Rachel Wissner"]
+        else    {
+            if partList.contains(participants[part1.selectedRow(inComponent: 0)])   {
+                part1.selectRow(0, inComponent: 0, animated: true)
+                return
+            }
+            if participants[part1.selectedRow(inComponent: 0)] == "Select Participant"  {
+                return
+            }
+            table.reloadData()
+            partList.append(participants[part1.selectedRow(inComponent: 0)])
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (partList.count+1)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = self.partList[indexPath.row]
+        cell.textLabel?.font = UIFont(name: "Lato-Regular", size: 20)
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor = UIColor.black
+        return cell
+    }
+    
+
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let label = (view as? UILabel) ?? UILabel()
         label.font = UIFont(name: "Lato-Regular", size: 20)
@@ -70,29 +101,57 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if part2.selectedRow(inComponent: 0) == part1.selectedRow(inComponent: 0)  {
-            print("same")
-            part2.selectRow(0, inComponent: 0, animated: true)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Lato-Regular", size: 26)
+            pickerLabel?.textAlignment = .center
         }
+        pickerLabel?.text = participants[row]
+        pickerLabel?.textColor = UIColor.white
+        
+        return pickerLabel!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 35
     }
     
     @IBAction func next(_ sender: Any) {
-        let part1 = participants[self.part1.selectedRow(inComponent: 0)]
-        let part2 = participants[self.part2.selectedRow(inComponent: 0)]
-        let part3 = participants[self.part3.selectedRow(inComponent: 0)]
-        let part4 = participants[self.part4.selectedRow(inComponent: 0)]
-        print("p1: \(part1), p2: \(part2), p3: \(part3), p4: \(part4) ")
-        
-        UserDefaults.standard.set(("\(part1)"), forKey: "Part1")
-        UserDefaults.standard.set(("\(part2)"), forKey: "Part2")
-        UserDefaults.standard.set(("\(part3)"), forKey: "Part3")
-        UserDefaults.standard.set(("\(part4)"), forKey: "Part4")
-
+        print("plcount: \(partList.count)")
+        if partList.count == 0  {
+            print("got in here")
+            let alert = UIAlertController(title: "Error", message: "Please select at least one participant.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        UserDefaults.standard.set(partList, forKey: "Parts")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func getInfo(codeName: String)  {
+        
+        self.successRef.child("\(codeName)").observe(.value, with: {(snapshot: DataSnapshot) in
+            guard let dict = (snapshot.value)! as? [String] else {
+                print("Error\n")
+                print((snapshot.value)!)
+                return
+            }
+            print(dict)
+            self.participants = dict
+            self.part1.reloadAllComponents()
+        })
     }
     
 }
