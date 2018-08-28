@@ -110,6 +110,16 @@ class HistoryScene: SKScene {
         startSim.position = CGPoint(x: self.size.width/2, y: self.size.height*0.21)
         self.addChild(startSim)
         
+        let key = generateRandomDigits(10)
+        UserDefaults.standard.set(key, forKey: "Key")
+        
+        let uniqueLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        uniqueLabel.text = "Key: \(key)"
+        uniqueLabel.fontSize = 90
+        uniqueLabel.fontColor = SKColor.white
+        uniqueLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.08)
+        self.addChild(uniqueLabel)
+        
     }
    
     func getScenarios(scenName: String) {
@@ -117,8 +127,8 @@ class HistoryScene: SKScene {
             guard var dict = snapshot.value as? [String:Any] else {
                 print("Error")
                 return
-            }    
-            print("got here hx")
+            }
+            
             self.title = (dict["Title"])! as! String
             self.birth = (dict["Birth"])! as! String
             self.weeks = (dict["Weeks"])! as! String
@@ -150,14 +160,26 @@ class HistoryScene: SKScene {
                 self.view!.presentScene(sceneToMoveTo)
             }
             if nodeITapped.name == "menu"   {
-                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyboard.instantiateViewController(withIdentifier: "gvc") as UIViewController
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController = view
-
             }
         }
     }
+
+    func generateRandomDigits(_ digitNumber: Int) -> String {
+        var number = ""
+        for i in 0..<digitNumber {
+            var randomNumber = arc4random_uniform(10)
+            while randomNumber == 0 && i == 0 {
+                randomNumber = arc4random_uniform(10)
+            }
+            number += "\(randomNumber)"
+        }
+        return number
+    }
     
 }
+
+

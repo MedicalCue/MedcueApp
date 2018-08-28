@@ -8,61 +8,143 @@
 
 import Foundation
 import SpriteKit
+import FirebaseDatabase
 
 class EndScene: SKScene {
     
+    var ref: DatabaseReference!
+    var endRef: DatabaseReference!
+    var idenRef: DatabaseReference!
+    var timeRef: DatabaseReference!
+    var scenRef: DatabaseReference!
+    var hospRef: DatabaseReference!
+    
+    var parts = [String]()
+    var scenName: String = ""
+    
     override func didMove(to view: SKView) {
+        
+        self.ref = Database.database().reference()
+        self.endRef = self.ref.child("Completed")
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.addChild(background)
         
         let logoLabel = SKSpriteNode(imageNamed: "logo")
-        logoLabel.size = CGSize(width: 1500/3.5, height: 224/3.5)
-        logoLabel.position = CGPoint(x: self.size.width*0.70, y: self.size.height*0.94)
+        logoLabel.size = CGSize(width: 1500/2.25, height: 224/2.25)
+        logoLabel.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.88)
         self.addChild(logoLabel)
         
         let finishedLabel = SKLabelNode(fontNamed: "Lato-Regular")
         finishedLabel.text = "Completed"
         finishedLabel.fontSize = 125
         finishedLabel.fontColor = SKColor.white
-        finishedLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.50)
+        finishedLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.625)
         self.addChild(finishedLabel)
         
         let scenLabel = SKLabelNode(fontNamed: "Lato-Regular")
-        let scenName = UserDefaults.standard.string(forKey: "Name")!
+        scenName = UserDefaults.standard.string(forKey: "Name")!
         scenLabel.text = "\(scenName)"
         scenLabel.fontColor = SKColor.white
         scenLabel.fontSize = 150
-        scenLabel.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.60)
+        scenLabel.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.72)
         self.addChild(scenLabel)
         
-        let rect5 = SKShapeNode(rectOf: CGSize(width: 425, height: 150), cornerRadius: 10)
-        let color = UIColor(red: 0/255, green: 147/255, blue: 249/255, alpha: 1)
-        rect5.fillColor = color
-        rect5.strokeColor = color
-        rect5.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.405)
-        self.addChild(rect5)
+        let anotherRect = SKShapeNode(rectOf: CGSize(width: 425, height: 150), cornerRadius: 10)
+        let color2 = UIColor(red: 0/255, green: 175/255, blue: 0/255, alpha: 1)
+        anotherRect.fillColor = color2
+        anotherRect.strokeColor = color2
+        anotherRect.position = CGPoint(x: self.size.width/2, y: self.size.height*0.515)
+        self.addChild(anotherRect)
         
-        let repeatLabel = SKLabelNode(fontNamed: "Lato-Regular")
-        repeatLabel.text = "Repeat"
-        repeatLabel.name = "repeat"
-        repeatLabel.fontSize = 100
-        repeatLabel.fontColor = SKColor.white
-        repeatLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.39)
-        self.addChild(repeatLabel)
+        let anotherLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        anotherLabel.text = "Scenarios"
+        anotherLabel.name = "another"
+        anotherLabel.fontSize = 90
+        anotherLabel.fontColor = SKColor.white
+        anotherLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.50)
+        self.addChild(anotherLabel)
+        
+        let teamRect = SKShapeNode(rectOf: CGSize(width: 425, height: 150), cornerRadius: 10)
+        let color1 = UIColor(red: 0/255, green: 147/255, blue: 249/255, alpha: 1)
+        teamRect.fillColor = color1
+        teamRect.strokeColor = color1
+        teamRect.position = CGPoint(x: self.size.width/2, y: self.size.height*0.415)
+        self.addChild(teamRect)
+        
+        let teamLabel = SKLabelNode(fontNamed: "Lato-Regular")
+        teamLabel.text = "Team"
+        teamLabel.name = "team"
+        teamLabel.fontSize = 90
+        teamLabel.fontColor = SKColor.white
+        teamLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.40)
+        self.addChild(teamLabel)
+        
+        let quitRect = SKShapeNode(rectOf: CGSize(width: 425, height: 150), cornerRadius: 10)
+        let color = UIColor(red: 255/255, green: 60/255, blue: 0/255, alpha: 1)
+        quitRect.fillColor = color
+        quitRect.strokeColor = color
+        quitRect.position = CGPoint(x: self.size.width*0.50, y: self.size.height*0.315)
+        self.addChild(quitRect)
         
         let quitLabel = SKLabelNode(fontNamed: "Lato-Regular")
-        quitLabel.text = "Home"
-        quitLabel.name = "home"
-        quitLabel.fontSize = 100
+        quitLabel.text = "Quit"
+        quitLabel.name = "quit"
+        quitLabel.fontSize = 90
         quitLabel.fontColor = SKColor.white
-        quitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.20)
+        quitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.30)
         self.addChild(quitLabel)
 
-        let parts = UserDefaults.standard.stringArray(forKey: "Parts")!
+        parts = UserDefaults.standard.stringArray(forKey: "Parts")!
         print("parts: \(parts)")
         print("completed: \(scenName)")
+        
+        export()
+    
+    }
+    
+    func export()   {
+        
+        self.idenRef = self.ref.child("Identifiers")
+        self.hospRef = self.ref.child("Hospitals")
+        
+        let codeName = UserDefaults.standard.string(forKey: "Code")!
+        print("codeName: \(codeName)")
+        
+        let Scenario = "\(self.scenName)"
+        let Hospital = UserDefaults.standard.string(forKey: "Hospital")!
+        let Key = UserDefaults.standard.string(forKey: "Key")!
+
+        let info: Dictionary =  ["Hospital": Hospital,
+                                 "Scenario": Scenario,
+                                 "Key": Key] as [String : Any]
+
+        self.idenRef.child("\(codeName)").observe(.value, with: {(snapshot: DataSnapshot) in
+            guard let dict = (snapshot.value)! as? [String: Any] else {
+                print("Error")
+                return
+            }
+
+            var counter = 0
+
+            while counter != self.parts.count    {
+                let temp = self.parts[counter]
+                let iden = dict["\((temp))"]
+                
+                let date = NSDate()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM-dd-yyyy' 'HH:mm:ss"
+                dateFormatter.timeZone = NSTimeZone.local
+                let time = dateFormatter.string(from: date as Date)
+                
+                self.scenRef = self.endRef.child("\(iden!)")
+                self.scenRef.updateChildValues(["/\(time)" : info ])
+                
+                counter+=1
+            }
+            
+        })
         
     }
     
@@ -73,16 +155,21 @@ class EndScene: SKScene {
             let pointOfTouch = touch.location(in:self)
             let nodeITapped = atPoint(pointOfTouch)
         
-            if nodeITapped.name == "repeat" {
-                
-                let sceneToMoveTo = HistoryScene(size: self.size)
-                sceneToMoveTo.scaleMode = self.scaleMode
-                self.view!.presentScene(sceneToMoveTo)
-                
+            if nodeITapped.name == "another" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let view = storyboard.instantiateViewController(withIdentifier: "gvc") as UIViewController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = view
             }
-            if nodeITapped.name == "home"   {
+            if nodeITapped.name == "quit"   {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyboard.instantiateViewController(withIdentifier: "first") as UIViewController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = view
+            }
+            if nodeITapped.name == "team"   {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let view = storyboard.instantiateViewController(withIdentifier: "success") as UIViewController
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController = view
             }

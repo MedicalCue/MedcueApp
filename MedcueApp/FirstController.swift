@@ -19,12 +19,11 @@ class FirstController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   //     textbox.becomeFirstResponder()
         configureFields()
         configureTapGesture()
         
         self.ref = Database.database().reference()
-        self.firstRef = self.ref.child("Participants")
+        self.firstRef = self.ref.child("Hospitals")
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,42 +57,39 @@ class FirstController: UIViewController, UITextFieldDelegate {
     }
 
     func loginAttempt() {
+            
+        UserDefaults.standard.set(("\(String(describing: self.textbox.text!))"), forKey: "Code")
         
-        let code = textbox.text
+        self.firstRef.child("\(self.textbox.text!)").observe(.value, with: {(snapshot: DataSnapshot) in
+            let hospital = snapshot.value as! String
+            UserDefaults.standard.set("\(hospital)", forKey: "Hospital")
+        })
         
-        UserDefaults.standard.set(("\(String(describing: (code)!))"), forKey: "Code")
+        if self.textbox.text?.isEmpty == true   {
+            error()
+            return
+        }
         
-        
-        self.firstRef.observe(.value, with: {(snapshot: DataSnapshot) in
-            print(snapshot.value!)
-            if snapshot.exists() {
-                print("\nyes\n")
+        self.firstRef.observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
+         
+            if snapshot.hasChild(self.textbox.text!) {
+                                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyboard.instantiateViewController(withIdentifier: "success") as UIViewController
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController = view
             }
             else    {
-                let alert = UIAlertController(title: "Error", message: "Please input hospital code to enter simulation. If you do not have a code, proceed to the next page.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Sign Up", style: .default, handler: self.proceed))
-                self.present(alert, animated: true)
+                self.error()
             }
-            
         })
-      /*
-        if code == "dummy" || code == "scripps"  {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let view = storyboard.instantiateViewController(withIdentifier: "success") as UIViewController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = view
-        }
-        else    {
-            let alert = UIAlertController(title: "Error", message: "Please input hospital code to enter simulation. If you do not have a code, proceed to the next page.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Sign Up", style: .default, handler: proceed))
-            self.present(alert, animated: true)
-        }*/
+    }
+    
+    func error()    {
+        let alert = UIAlertController(title: "Error", message: "Please input hospital code to enter simulation. If you do not have a code, proceed to the next page.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Sign Up", style: .default, handler: self.proceed))
+        self.present(alert, animated: true)
     }
     
     func proceed(action: UIAlertAction) {

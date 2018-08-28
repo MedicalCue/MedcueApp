@@ -59,8 +59,8 @@ class GameScene: SKScene {
         self.gameRef = self.ref.child("Simulations")
         
         getScenarios(scenName: scenName)
-        print("got out of get")
-        
+        print("current: \(scenName)")
+
         startTimer()
 
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
@@ -277,10 +277,6 @@ class GameScene: SKScene {
             print(error.localizedDescription)
         }
         
-      /*
-        let crySound = SKAction.playSoundFileNamed("baby-crying-01", waitForCompletion: false)
-        self.run(crySound)*/
-        
         if sound[0] == "Cry" || sound[0] == "Crying" {
             player?.play()
             player?.volume = 1.0
@@ -297,10 +293,6 @@ class GameScene: SKScene {
 
     func changeValue()  {
         reference = idx + 1
-        
-        print("\n\nruntime: \(run_time)\n")
-        print("ref: \(reference)")
-        print("current: \(scenName)")
         
         if elapsed >= run_time[reference]  {
             if run_time[reference] == run_time.last  {
@@ -519,16 +511,12 @@ class GameScene: SKScene {
     }
     
     func getScenarios(scenName: String) {
-        print("got in get")
-        print("scenname: \(scenName)")
         
             self.gameRef.child("\(scenName)").observe(.value, with: {(snapshot: DataSnapshot) in
-            print("got here")
             guard var dict = snapshot.value as? [String:Any] else {
                 print("Error")
                 return
             }
-            print("snapshot:\n\n \(snapshot)\n")
             
             self.run_time = dict["Times"] as! [Double]
             self.resp = dict["Resp"] as! [String]

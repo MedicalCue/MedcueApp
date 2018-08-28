@@ -21,6 +21,7 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     var scen = [String]()
 
     @IBOutlet var Scenarios: UIPickerView!
+    @IBOutlet var go: UIButton!
     
     var scenario = [""]
     
@@ -87,6 +88,9 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         
+        go.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        go.layer.cornerRadius = 15
+        
         self.ref = Database.database().reference()
         self.scenRef = self.ref.child("Scenarios")
         
@@ -96,8 +100,6 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
                 return
             }
             self.scenario = scen
-            print("scenario: \(self.scenario)")
-            print("scen: \(scen)")
             self.Scenarios.reloadAllComponents()
             
         })

@@ -20,6 +20,8 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     var participants = [String]()
     var partList: [String] = []
     
+    var counter = 0
+    
     @IBOutlet var part1: UIPickerView!
     @IBOutlet var table: UITableView!
     @IBOutlet var add: UIButton!
@@ -43,33 +45,21 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         
     }
     
-
-    @IBAction func add(_ sender: Any) {
-        
-        if partList.count == 4  {
-            print("returning")
-            part1.selectRow(0, inComponent: 0, animated: true)
-            return
-        }
-        else    {
-            if partList.contains(participants[part1.selectedRow(inComponent: 0)])   {
-                part1.selectRow(0, inComponent: 0, animated: true)
-                return
-            }
-            if participants[part1.selectedRow(inComponent: 0)] == "Select Participant"  {
-                return
-            }
-            table.reloadData()
-            partList.append(participants[part1.selectedRow(inComponent: 0)])
-        }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (partList.count+1)
+        print("\nnumber\n")
+        print("count: \(counter)")
+        return counter+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        print("idx: \(indexPath.row)")
+        print("path: \(indexPath)")
+        print("list: \(partList)")
         cell.textLabel?.text = self.partList[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Lato-Regular", size: 20)
         cell.textLabel?.textAlignment = .center
@@ -78,7 +68,19 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            partList.remove(at: indexPath.row)
+            print(partList)
+            
+            table.deleteRows(at: [indexPath], with: .automatic)
+            counter-=1
+        }
+    }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let label = (view as? UILabel) ?? UILabel()
@@ -120,10 +122,30 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         return 35
     }
     
+    @IBAction func add(_ sender: Any) {
+        
+        if partList.count == 4  {
+            part1.selectRow(0, inComponent: 0, animated: true)
+            return
+        }
+        else    {
+            if partList.contains(participants[part1.selectedRow(inComponent: 0)])   {
+                part1.selectRow(0, inComponent: 0, animated: true)
+                return
+            }
+            if participants[part1.selectedRow(inComponent: 0)].range(of: "Select") != nil  {
+                return
+            }
+            table.reloadData()
+            partList.append(participants[part1.selectedRow(inComponent: 0)])
+            print("added")
+            counter+=1
+        }
+    }
+    
     @IBAction func next(_ sender: Any) {
         print("plcount: \(partList.count)")
         if partList.count == 0  {
-            print("got in here")
             let alert = UIAlertController(title: "Error", message: "Please select at least one participant.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -133,7 +155,6 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -145,7 +166,6 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         self.successRef.child("\(codeName)").observe(.value, with: {(snapshot: DataSnapshot) in
             guard let dict = (snapshot.value)! as? [String] else {
                 print("Error\n")
-                print((snapshot.value)!)
                 return
             }
             print(dict)
