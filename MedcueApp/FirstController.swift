@@ -19,11 +19,12 @@ class FirstController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureFields()
         configureTapGesture()
         
         self.ref = Database.database().reference()
-        self.firstRef = self.ref.child("Hospitals")
+        self.firstRef = self.ref.child("Import").child("Hospitals")
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +47,7 @@ class FirstController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(FirstController.handleTap))
         view.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc func handleTap()    {
         view.endEditing(true)
     }
@@ -60,11 +61,6 @@ class FirstController: UIViewController, UITextFieldDelegate {
             
         UserDefaults.standard.set(("\(String(describing: self.textbox.text!))"), forKey: "Code")
         
-        self.firstRef.child("\(self.textbox.text!)").observe(.value, with: {(snapshot: DataSnapshot) in
-            let hospital = snapshot.value as! String
-            UserDefaults.standard.set("\(hospital)", forKey: "Hospital")
-        })
-        
         if self.textbox.text?.isEmpty == true   {
             error()
             return
@@ -73,6 +69,10 @@ class FirstController: UIViewController, UITextFieldDelegate {
         self.firstRef.observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
          
             if snapshot.hasChild(self.textbox.text!) {
+                let snap = snapshot.value as! [String: Any]
+                let hospital = snap["\(self.textbox.text!)"] as! String
+                print("hospital: \(hospital)")
+                UserDefaults.standard.set("\(hospital)", forKey: "Hospital")
                                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyboard.instantiateViewController(withIdentifier: "success") as UIViewController

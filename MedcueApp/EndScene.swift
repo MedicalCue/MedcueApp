@@ -15,17 +15,11 @@ class EndScene: SKScene {
     var ref: DatabaseReference!
     var endRef: DatabaseReference!
     var idenRef: DatabaseReference!
-    var timeRef: DatabaseReference!
     var scenRef: DatabaseReference!
-    var hospRef: DatabaseReference!
     
-    var parts = [String]()
     var scenName: String = ""
     
     override func didMove(to view: SKView) {
-        
-        self.ref = Database.database().reference()
-        self.endRef = self.ref.child("Completed")
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
@@ -95,42 +89,51 @@ class EndScene: SKScene {
         quitLabel.fontColor = SKColor.white
         quitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.30)
         self.addChild(quitLabel)
-
-        parts = UserDefaults.standard.stringArray(forKey: "Parts")!
-        print("parts: \(parts)")
-        print("completed: \(scenName)")
         
-        export()
-    
+        self.ref = Database.database().reference()
+        self.endRef = self.ref.child("Export").child("Completed")
+        
+        let elapsed = UserDefaults.standard.double(forKey: "Elapsed")
+        let time = UserDefaults.standard.double(forKey: "Last")
+        print("elapsed: \(elapsed) & time: \(time)")
+        let difference = time - elapsed
+        
+        if difference <= 10.0   {
+            export()
+        }
+        else    {
+            print("did not export")
+        }
+        
     }
     
     func export()   {
         
-        self.idenRef = self.ref.child("Identifiers")
-        self.hospRef = self.ref.child("Hospitals")
-        
-        let codeName = UserDefaults.standard.string(forKey: "Code")!
-        print("codeName: \(codeName)")
+        self.idenRef = self.ref.child("Import").child("Identifiers")
+        let parts = UserDefaults.standard.stringArray(forKey: "Parts")!
+        print("parts: \(parts)")
+        print("completed: \(scenName)")
         
         let Scenario = "\(self.scenName)"
         let Hospital = UserDefaults.standard.string(forKey: "Hospital")!
         let Key = UserDefaults.standard.string(forKey: "Key")!
-
-        let info: Dictionary =  ["Hospital": Hospital,
-                                 "Scenario": Scenario,
+        
+        let info: Dictionary =  ["Scenario": Scenario,
                                  "Key": Key] as [String : Any]
-
-        self.idenRef.child("\(codeName)").observe(.value, with: {(snapshot: DataSnapshot) in
+        
+        self.idenRef.child("\(Hospital)").observe(.value, with: {(snapshot: DataSnapshot) in
             guard let dict = (snapshot.value)! as? [String: Any] else {
                 print("Error")
                 return
             }
-
+            
             var counter = 0
-
-            while counter != self.parts.count    {
-                let temp = self.parts[counter]
+            
+            while counter != parts.count    {
+                let temp = parts[counter]
                 let iden = dict["\((temp))"]
+                print("temp: \(temp)")
+                print("iden: \(iden!)")
                 
                 let date = NSDate()
                 let dateFormatter = DateFormatter()
@@ -138,12 +141,12 @@ class EndScene: SKScene {
                 dateFormatter.timeZone = NSTimeZone.local
                 let time = dateFormatter.string(from: date as Date)
                 
-                self.scenRef = self.endRef.child("\(iden!)")
-                self.scenRef.updateChildValues(["/\(time)" : info ])
+                self.scenRef = self.endRef.child("\(Hospital)")
+                let next = self.scenRef.child("\(iden!)")
+                next.updateChildValues(["/\(time)" : info ])
                 
                 counter+=1
             }
-            
         })
         
     }
@@ -173,7 +176,6 @@ class EndScene: SKScene {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController = view
             }
-        
         }
     
     }

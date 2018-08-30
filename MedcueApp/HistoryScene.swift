@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class HistoryScene: SKScene {
     
-     var viewController: GameViewController!
+    var viewController: GameViewController!
     
     let scenarioLabel = SKLabelNode(fontNamed: "Lato-Regular")
     let weeksLabel = SKLabelNode(fontNamed: "Lato-Regular")
@@ -23,24 +23,23 @@ class HistoryScene: SKScene {
     var scenName: String = ""
     
     var title = ""
-    var weeks = ""
+    var weeks = 0
     var birth = ""
-    var weight = ""
+    var weight = 0.0
     var extra = ""
     var extra2 = ""
     
     var ref: DatabaseReference!
-    var scenRef: DatabaseReference!    
+    var scenRef: DatabaseReference!
     
     override func didMove(to view: SKView) {
         
         scenName = UserDefaults.standard.string(forKey: "Name")!
       
         self.ref = Database.database().reference()
-        self.scenRef = self.ref.child("Histories")
+        self.scenRef = self.ref.child("Import").child("Histories")
         getScenarios(scenName: scenName)
         
-        UserDefaults.standard.set(("\(title)"), forKey: "Title")
         
         let background = SKSpriteNode(color: SKColor.black, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
@@ -54,13 +53,13 @@ class HistoryScene: SKScene {
         let menuButton = SKLabelNode(fontNamed: "Lato-Regular")
         menuButton.text = "<Back"
         menuButton.name = "menu"
-        menuButton.fontSize = 77
+        menuButton.fontSize = 78
         menuButton.fontColor = SKColor.white
-        menuButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.918)
+        menuButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.92)
         self.addChild(menuButton)
 
         scenarioLabel.text = "Scenario: \(String(describing: title))"
-        scenarioLabel.fontSize = 180
+        scenarioLabel.fontSize = 150
         scenarioLabel.fontColor = SKColor.white
         scenarioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.70)
         self.addChild(scenarioLabel)
@@ -128,13 +127,14 @@ class HistoryScene: SKScene {
                 print("Error")
                 return
             }
-            
+                        
             self.title = (dict["Title"])! as! String
             self.birth = (dict["Birth"])! as! String
-            self.weeks = (dict["Weeks"])! as! String
-            self.weight = (dict["Weight"])! as! String
+            self.weeks = (dict["Weeks"])! as! Int
+            self.weight = (dict["Weight"])! as! Double
             self.extra = (dict["Extra"])! as! String
             self.extra2 = (dict["Extra2"])! as! String
+            UserDefaults.standard.set(("\(self.title)"), forKey: "Title")
             
             self.scenarioLabel.text = "Scenario: \(String(describing: self.title))"
             self.weeksLabel.text = "\(String(describing: self.weeks)) weeks"
@@ -146,11 +146,9 @@ class HistoryScene: SKScene {
         })
     }
     
- 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch: AnyObject in touches {
-            
             let pointOfTouch = touch.location(in:self)
             let nodeITapped = atPoint(pointOfTouch)
             

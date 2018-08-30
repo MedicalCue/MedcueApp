@@ -25,6 +25,21 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     var scenario = [""]
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        
+        go.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        go.layer.cornerRadius = 15
+        
+        let hosp = UserDefaults.standard.string(forKey: "Hospital")
+        print("hosp: \(hosp!)")
+        
+        self.ref = Database.database().reference()
+        self.scenRef = self.ref.child("Import").child("Scenarios")
+        getScenarios(hospital: hosp!)
+        
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -65,7 +80,6 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         return myTitle
     }
  
-    
     @IBAction func button(_ sender: UIButton) {
  
         scenName = scenario[pick]
@@ -84,39 +98,9 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     override var shouldAutorotate: Bool {
         return false
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
-        go.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        go.layer.cornerRadius = 15
-        
-        self.ref = Database.database().reference()
-        self.scenRef = self.ref.child("Scenarios")
-        
-        self.scenRef.observe(.value, with: {(snapshot: DataSnapshot) in
-            guard let scen = (snapshot.value) as? [String] else {
-                print("Error")
-                return
-            }
-            self.scenario = scen
-            self.Scenarios.reloadAllComponents()
-            
-        })
-        
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -125,6 +109,18 @@ class GameViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func getScenarios(hospital: String) {
+        self.scenRef.observe(.value, with: {(snapshot: DataSnapshot) in
+            guard var scen = (snapshot.value) as? [String] else {
+                print("Error")
+                return
+            }
+            scen.sort()
+            self.scenario = scen
+            self.Scenarios.reloadAllComponents()
+        })
     }
     
 }

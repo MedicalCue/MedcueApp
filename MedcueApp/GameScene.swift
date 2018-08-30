@@ -12,14 +12,17 @@ import UIKit
 import AVFoundation
 import FirebaseDatabase
 
+
+
 class GameScene: SKScene {
     
     var player: AVAudioPlayer?
     var ref: DatabaseReference!
     var gameRef: DatabaseReference!
+    var alertController: UIAlertController?
+    
     var scenName: String = ""
     var scenTitle: String = ""
-    
     var timer: Timer?
     var startTime: Double = 0
     var time: Double = 0
@@ -28,6 +31,12 @@ class GameScene: SKScene {
     var isPlaying = false
     var idx = 0
     var reference = 0
+    var run_time = [0.0, 10.0]
+    var resp = [""]
+    var sound = [""]
+    var pulse = [0]
+    var sat = [""] as [Any]
+    var activity = [""]
     let labelSecond = SKLabelNode(fontNamed: "Lato-Regular")
     let labelMinute = SKLabelNode(fontNamed: "Lato-Regular")
     let respValue = SKLabelNode(fontNamed: "Lato-Regular")
@@ -40,23 +49,16 @@ class GameScene: SKScene {
     let activityValue2 = SKLabelNode(fontNamed: "Lato-Regular")
     let pauseButton = SKSpriteNode(imageNamed: "pause")
     let playButton = SKSpriteNode(imageNamed: "play")
-    
     let cry = Bundle.main.path(forResource: "crying", ofType: "mp3")
 
-    var run_time = [0.0, 10.0]
-    var resp = [""]
-    var sound = [""]
-    var pulse = [0]
-    var sat = [""] as [Any]
-    var activity = [""]
-    
     override func didMove(to view: SKView) {
         
         scenName = UserDefaults.standard.string(forKey: "Name")!
         scenTitle = UserDefaults.standard.string(forKey: "Title")!
+        print("scenTitle: \(scenTitle)")
         
         self.ref = Database.database().reference()
-        self.gameRef = self.ref.child("Simulations")
+        self.gameRef = self.ref.child("Import").child("Simulations")
         
         getScenarios(scenName: scenName)
         print("current: \(scenName)")
@@ -76,6 +78,7 @@ class GameScene: SKScene {
         let color1 = UIColor(red: 94/255, green: 140/255, blue: 255/255, alpha: 1)
         rect1.fillColor = color1
         rect1.strokeColor = color1
+        rect1.name = "resp"
         rect1.position = CGPoint(x: self.size.width*0.315, y: self.size.height*0.63)
         self.addChild(rect1)
         
@@ -83,6 +86,7 @@ class GameScene: SKScene {
         let color2 = UIColor(red: 255/255, green: 110/255, blue: 0/255, alpha: 1)
         rect2.fillColor = color2
         rect2.strokeColor = color2
+        rect2.name = "pulse"
         rect2.position = CGPoint(x: self.size.width*0.685, y: self.size.height*0.63)
         self.addChild(rect2)
         
@@ -112,6 +116,7 @@ class GameScene: SKScene {
         
         let respLabel = SKLabelNode(fontNamed: "Lato-Bold")
         respLabel.text = "Resp"
+        respLabel.name = "resp"
         respLabel.fontSize = 125
         respLabel.fontColor = SKColor.white
         respLabel.position = CGPoint(x: self.size.width*0.315, y: self.size.height*0.68)
@@ -119,6 +124,7 @@ class GameScene: SKScene {
         
         respValue.fontColor = SKColor.white
         respValue.fontSize = 125
+        respValue.name = "resp"
         respValue.text = "\(resp[0])"
         respValue.position = CGPoint(x: self.size.width*0.31, y: self.size.height*0.58)
         respValue2.fontSize = 125
@@ -154,6 +160,7 @@ class GameScene: SKScene {
         
         let pulseLabel = SKLabelNode(fontNamed: "Lato-Bold")
         pulseLabel.text = "Pulse"
+        pulseLabel.name = "pulse"
         pulseLabel.fontSize = 125
         pulseLabel.fontColor = SKColor.white
         pulseLabel.position = CGPoint(x: self.size.width*0.69, y: self.size.height*0.685)
@@ -161,6 +168,7 @@ class GameScene: SKScene {
         
         pulseValue.text = "\(pulse[0])"
         pulseValue.fontSize = 125
+        pulseValue.name = "pulse"
         pulseValue.fontColor = SKColor.white
             if pulse[0] > 99    {
                 pulseValue.position = CGPoint(x: self.size.width*0.62, y: self.size.height*0.58)
@@ -252,9 +260,9 @@ class GameScene: SKScene {
         let backButton = SKLabelNode(fontNamed: "Lato-Regular")
         backButton.text = "<Back"
         backButton.name = "back"
-        backButton.fontSize = 77
+        backButton.fontSize = 78
         backButton.fontColor = SKColor.white
-        backButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.918)
+        backButton.position = CGPoint(x: self.size.width*0.229, y: self.size.height*0.92)
         self.addChild(backButton)
         
         let rect5 = SKShapeNode(rectOf: CGSize(width: 250, height: 127.5), cornerRadius: 10)
@@ -289,6 +297,10 @@ class GameScene: SKScene {
             player?.numberOfLoops = -1
             isPlaying = true
         }
+        
+        show(value: respValue)
+        show(value: pulseValue)
+        
     }
 
     func changeValue()  {
@@ -416,7 +428,16 @@ class GameScene: SKScene {
                 resetTimer()
             }
             if nodeITapped.name == "finish" {
-                exit()
+                
+                pauseTimer()
+                player?.stop()
+                isPlaying = false
+                
+                let alert = UIAlertController(title: "End Simulation", message: "Are you sure you want to stop the simulation?", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: self.stopEarly))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: self.cont))
+                self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                
             }
             if nodeITapped.name == "back"   {
                 pauseTimer()
@@ -427,7 +448,26 @@ class GameScene: SKScene {
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene)
             }
+            if nodeITapped.name == "resp"  {
+                print("here")
+                show(value: respValue)
+            }
+            if nodeITapped.name == "pulse"   {
+                print("hither")
+                show(value: pulseValue)
+            }
         }
+    }
+    
+    func show(value: SKLabelNode) {
+        value.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0)   {
+            self.hide(value: value)
+        }
+    }
+    
+    func hide(value: SKLabelNode) {
+        value.isHidden = true
     }
     
     func startTimer()   {
@@ -500,10 +540,27 @@ class GameScene: SKScene {
         self.view!.presentScene(sceneToMoveTo)
     }
     
+    func stopEarly(action: UIAlertAction)   {
+        exit()
+    }
+    
+    func cont(action: UIAlertAction)   {
+        startTimer()
+        player?.play()
+        isPlaying = true
+    }
+    
     func exit()  {
         pauseTimer()
         player?.stop()
         isPlaying = false
+        
+        print("last: \(self.run_time.last!)")
+        print("time: \(elapsed)")
+        
+        UserDefaults.standard.set(elapsed, forKey: "Elapsed")
+        UserDefaults.standard.set(self.run_time.last!, forKey: "Last")
+        
         let waitToChangeScene = SKAction.wait(forDuration: 0.25)
         let changeSceneAction = SKAction.run(changeScene)
         let changeSequence = SKAction.sequence([waitToChangeScene, changeSceneAction])
@@ -517,7 +574,7 @@ class GameScene: SKScene {
                 print("Error")
                 return
             }
-            
+                
             self.run_time = dict["Times"] as! [Double]
             self.resp = dict["Resp"] as! [String]
             self.pulse = dict["Pulse"] as! [Int]

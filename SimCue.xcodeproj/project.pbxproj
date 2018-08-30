@@ -23,15 +23,19 @@
 		34882D5B20EBD7AB000E9424 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34882D5A20EBD7AB000E9424 /* logo.png */; };
 		34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882D5C20EBDD28000E9424 /* GameScene.swift */; };
 		34893694212B90D8002642DB /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34893693212B90D8002642DB /* SignupController.swift */; };
+		34E0EC3921373A3300CF8DB2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0EC3821373A3300CF8DB2 /* Utility.swift */; };
 		34E179D621092571003AD42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D521092571003AD42E /* Main.storyboard */; };
 		34E179D821092588003AD42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D721092588003AD42E /* LaunchScreen.storyboard */; };
 		34E179DB2109269B003AD42E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E179D92109269A003AD42E /* Lato-Regular.ttf */; };
 		34E179DC2109269B003AD42E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E179DA2109269A003AD42E /* Lato-Bold.ttf */; };
+		41638A2DF029D184386845EE /* Pods_SimCueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35A69EFC9F1589232D0E4CF /* Pods_SimCueUITests.framework */; };
 		4E1AF7EFF658FCB81ADA3169 /* Pods_MedcueAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */; };
 		613F5604C13DF190DFD75892 /* Pods_MedcueApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AE98B8E21407EEF1C6A653 /* Pods_MedcueApp.framework */; };
 		62B193DC20F3BF7C0031AB02 /* crying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193DB20F3BF7C0031AB02 /* crying.mp3 */; };
 		62B193DF20F3DE1A0031AB02 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */; };
 		62B193E320F3DEBC0031AB02 /* BabyCry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */; };
+		ACA202A9D3CDCA973A1C9D9A /* Pods_SimCueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C14CDD0A6CAB03F2BD5E30 /* Pods_SimCueTests.framework */; };
+		C44D080D3A8E751039D2CD5E /* Pods_SimCue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD90E358028AAC99C490768C /* Pods_SimCue.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01CF784AD4E05EDCAACC40EF /* Pods-SimCueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimCueUITests/Pods-SimCueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2387CD736332C0F793E2BB61 /* Pods-MedcueAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppTests/Pods-MedcueAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedcueAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		341F93FF2124E0B7005E1464 /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 		34882D5A20EBD7AB000E9424 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		34882D5C20EBDD28000E9424 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		34893693212B90D8002642DB /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		34E0EC3821373A3300CF8DB2 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		34E179D521092571003AD42E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		34E179D721092588003AD42E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34E179D92109269A003AD42E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
@@ -83,12 +89,20 @@
 		62B193DB20F3BF7C0031AB02 /* crying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = crying.mp3; path = ../../../Downloads/crying.mp3; sourceTree = "<group>"; };
 		62B193DE20F3DE1A0031AB02 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		62B193E220F3DEBC0031AB02 /* BabyCry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BabyCry.mp3; sourceTree = "<group>"; };
+		6416387B2F4EADA4EAC93A30 /* Pods-SimCue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCue.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimCue/Pods-SimCue.release.xcconfig"; sourceTree = "<group>"; };
+		6FCC4FDC96D02D90AC299955 /* Pods-SimCue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimCue/Pods-SimCue.debug.xcconfig"; sourceTree = "<group>"; };
 		733505520DA53FA220991F7F /* Pods-MedcueApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp.release.xcconfig"; sourceTree = "<group>"; };
 		75AE98B8E21407EEF1C6A653 /* Pods_MedcueApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedcueApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DAD61CB7CEEE468A3C7A17F /* Pods-SimCueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimCueUITests/Pods-SimCueUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D3D4338B92E24F3A4A1D950 /* Pods-MedcueAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppUITests/Pods-MedcueAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8DF6974536D763151FB71D1F /* Pods-SimCueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimCueTests/Pods-SimCueTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A044AA896A7AADCA43A1A911 /* Pods-SimCueTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimCueTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimCueTests/Pods-SimCueTests.release.xcconfig"; sourceTree = "<group>"; };
+		A35A69EFC9F1589232D0E4CF /* Pods_SimCueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimCueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D3E345A9BB54A2EB28BC20 /* Pods-MedcueAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppTests/Pods-MedcueAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4ACB566CE3039D44BCC6555 /* Pods_MedcueAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedcueAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD90E358028AAC99C490768C /* Pods_SimCue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimCue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE82659DC89770E86FDB32E /* Pods-MedcueAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedcueAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedcueAppUITests/Pods-MedcueAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F7C14CDD0A6CAB03F2BD5E30 /* Pods_SimCueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimCueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +112,7 @@
 			files = (
 				62B193DF20F3DE1A0031AB02 /* AVFoundation.framework in Frameworks */,
 				613F5604C13DF190DFD75892 /* Pods_MedcueApp.framework in Frameworks */,
+				C44D080D3A8E751039D2CD5E /* Pods_SimCue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A3E5658A9B27670A9B33FE /* Pods_MedcueAppTests.framework in Frameworks */,
+				ACA202A9D3CDCA973A1C9D9A /* Pods_SimCueTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1AF7EFF658FCB81ADA3169 /* Pods_MedcueAppUITests.framework in Frameworks */,
+				41638A2DF029D184386845EE /* Pods_SimCueUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +172,7 @@
 				34882D2C20EAD3A2000E9424 /* GameViewController.swift */,
 				341F93FF2124E0B7005E1464 /* FirstController.swift */,
 				34893693212B90D8002642DB /* SignupController.swift */,
+				34E0EC3821373A3300CF8DB2 /* Utility.swift */,
 				347455F5212734B80035C394 /* SuccessController.swift */,
 				34E179D521092571003AD42E /* Main.storyboard */,
 				34882D3120EAD3A6000E9424 /* Assets.xcassets */,
@@ -194,6 +212,9 @@
 				75AE98B8E21407EEF1C6A653 /* Pods_MedcueApp.framework */,
 				B4ACB566CE3039D44BCC6555 /* Pods_MedcueAppTests.framework */,
 				253ED75C93216C4EE36E999C /* Pods_MedcueAppUITests.framework */,
+				BD90E358028AAC99C490768C /* Pods_SimCue.framework */,
+				F7C14CDD0A6CAB03F2BD5E30 /* Pods_SimCueTests.framework */,
+				A35A69EFC9F1589232D0E4CF /* Pods_SimCueUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +228,12 @@
 				2387CD736332C0F793E2BB61 /* Pods-MedcueAppTests.release.xcconfig */,
 				EBE82659DC89770E86FDB32E /* Pods-MedcueAppUITests.debug.xcconfig */,
 				8D3D4338B92E24F3A4A1D950 /* Pods-MedcueAppUITests.release.xcconfig */,
+				6FCC4FDC96D02D90AC299955 /* Pods-SimCue.debug.xcconfig */,
+				6416387B2F4EADA4EAC93A30 /* Pods-SimCue.release.xcconfig */,
+				8DF6974536D763151FB71D1F /* Pods-SimCueTests.debug.xcconfig */,
+				A044AA896A7AADCA43A1A911 /* Pods-SimCueTests.release.xcconfig */,
+				7DAD61CB7CEEE468A3C7A17F /* Pods-SimCueUITests.debug.xcconfig */,
+				01CF784AD4E05EDCAACC40EF /* Pods-SimCueUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -372,7 +399,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedcueApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SimCue-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -390,7 +417,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedcueAppUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SimCueUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -403,20 +430,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-SimCue/Pods-SimCue-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedcueApp/Pods-MedcueApp-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimCue/Pods-SimCue-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D57A1278A473B27E985E563B /* [CP] Check Pods Manifest.lock */ = {
@@ -430,7 +459,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedcueAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SimCueTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -450,6 +479,7 @@
 				34893694212B90D8002642DB /* SignupController.swift in Sources */,
 				34882D5D20EBDD28000E9424 /* GameScene.swift in Sources */,
 				34882D2520EAD3A2000E9424 /* AppDelegate.swift in Sources */,
+				34E0EC3921373A3300CF8DB2 /* Utility.swift in Sources */,
 				347455F6212734B80035C394 /* SuccessController.swift in Sources */,
 				343099C120EEB4DB00474138 /* EndScene.swift in Sources */,
 			);
@@ -603,7 +633,7 @@
 		};
 		34882D5020EAD3A6000E9424 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58CAF46A730644BE31CE0BFC /* Pods-MedcueApp.debug.xcconfig */;
+			baseConfigurationReference = 6FCC4FDC96D02D90AC299955 /* Pods-SimCue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -622,7 +652,7 @@
 		};
 		34882D5120EAD3A6000E9424 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 733505520DA53FA220991F7F /* Pods-MedcueApp.release.xcconfig */;
+			baseConfigurationReference = 6416387B2F4EADA4EAC93A30 /* Pods-SimCue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -641,7 +671,7 @@
 		};
 		34882D5320EAD3A6000E9424 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3D3E345A9BB54A2EB28BC20 /* Pods-MedcueAppTests.debug.xcconfig */;
+			baseConfigurationReference = 8DF6974536D763151FB71D1F /* Pods-SimCueTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -663,7 +693,7 @@
 		};
 		34882D5420EAD3A6000E9424 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2387CD736332C0F793E2BB61 /* Pods-MedcueAppTests.release.xcconfig */;
+			baseConfigurationReference = A044AA896A7AADCA43A1A911 /* Pods-SimCueTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -685,7 +715,7 @@
 		};
 		34882D5620EAD3A6000E9424 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBE82659DC89770E86FDB32E /* Pods-MedcueAppUITests.debug.xcconfig */;
+			baseConfigurationReference = 7DAD61CB7CEEE468A3C7A17F /* Pods-SimCueUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -706,7 +736,7 @@
 		};
 		34882D5720EAD3A6000E9424 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D3D4338B92E24F3A4A1D950 /* Pods-MedcueAppUITests.release.xcconfig */;
+			baseConfigurationReference = 01CF784AD4E05EDCAACC40EF /* Pods-SimCueUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

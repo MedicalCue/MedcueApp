@@ -19,9 +19,7 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
 
     var participants = [String]()
     var partList: [String] = []
-    
-    var counter = 0
-    
+
     @IBOutlet var part1: UIPickerView!
     @IBOutlet var table: UITableView!
     @IBOutlet var add: UIButton!
@@ -30,10 +28,10 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         super.viewDidAppear(false)
         
         self.ref = Database.database().reference()
-        self.successRef = self.ref.child("Participants")
+        self.successRef = self.ref.child("Import").child("Participants")
         
-        let codeName = UserDefaults.standard.string(forKey: "Code")!
-        getInfo(codeName: (codeName))
+        let hospital = UserDefaults.standard.string(forKey: "Hospital")!
+        getInfo(hospital: hospital)
         
         part1.delegate = self
         part1.dataSource = self
@@ -50,16 +48,11 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\nnumber\n")
-        print("count: \(counter)")
-        return counter+1
+        return partList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        print("idx: \(indexPath.row)")
-        print("path: \(indexPath)")
-        print("list: \(partList)")
         cell.textLabel?.text = self.partList[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Lato-Regular", size: 20)
         cell.textLabel?.textAlignment = .center
@@ -76,9 +69,8 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         if editingStyle == .delete {
             partList.remove(at: indexPath.row)
             print(partList)
-            
             table.deleteRows(at: [indexPath], with: .automatic)
-            counter-=1
+            print("plcount: \(partList.count)")
         }
     }
     
@@ -136,11 +128,9 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             if participants[part1.selectedRow(inComponent: 0)].range(of: "Select") != nil  {
                 return
             }
-            table.reloadData()
             partList.append(participants[part1.selectedRow(inComponent: 0)])
-            print("added")
-            counter+=1
         }
+        table.reloadData()
     }
     
     @IBAction func next(_ sender: Any) {
@@ -149,8 +139,15 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             let alert = UIAlertController(title: "Error", message: "Please select at least one participant.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true)
+            return
         }
         UserDefaults.standard.set(partList, forKey: "Parts")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let view = storyboard.instantiateViewController(withIdentifier: "gvc") as UIViewController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = view
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,17 +158,21 @@ class SuccessController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         return .lightContent
     }
     
-    func getInfo(codeName: String)  {
+    func getInfo(hospital: String)  {
         
-        self.successRef.child("\(codeName)").observe(.value, with: {(snapshot: DataSnapshot) in
+        self.successRef.child("\(hospital)").observe(.value, with: {(snapshot: DataSnapshot) in
             guard let dict = (snapshot.value)! as? [String] else {
                 print("Error\n")
+                print("snapshot: \(snapshot.value!)")
                 return
             }
-            print(dict)
+            
             self.participants = dict
+            self.participants[0] = ""
+            self.participants.sort()
+            self.participants[0] = "Select Participants"
             self.part1.reloadAllComponents()
         })
-    }
-    
+        }
+ 
 }
